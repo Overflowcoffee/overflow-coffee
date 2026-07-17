@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overflow Coffee — Coming to Multnomah Village, Portland</title>
+<meta name="description" content="Overflow Coffee is opening in Multnomah Village, Portland. Explore our menu, meet the founder, and help us fund our launch.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Overflow <span style="color:var(--oxblood)">Coffee</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="active">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">Our Story</a>
+    <a href="crowdfunding.html">Back Us</a>
+    <a href="contact.html">Visit Us</a>
+  </div>
+  <button class="nav-toggle" id="navToggle">☰</button>
+  <a href="crowdfunding.html" class="nav-cta">Fill Your Cup</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-blocks">
+    <div class="b1"></div><div class="b2"></div>
+  </div>
+  <div class="hero-content">
+    <span class="eyebrow">Coming to Multnomah Village, Portland</span>
+    <h1>Fill Your Cup, Share The Overflow.</h1>
+    <p class="sub">Overflow Coffee is a neighborhood coffee shop built on exceptional coffee, genuine hospitality, and community — opening early fall 2026.</p>
+    <div class="hero-btns">
+      <a href="crowdfunding.html" class="btn-primary">Back Our Launch</a>
+      <a href="menu.html" class="btn-secondary">See Our Menu</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg" style="text-align:center;">
+  <span class="label-tag">The Transformation</span>
+  <div class="section-rule" style="margin-left:auto; margin-right:auto;"></div>
+  <p style="max-width:600px; margin:0 auto 30px; opacity:0.85;">Drag the slider to see the space before and after our renovation.</p>
+  <div class="before-after-wrap" id="baWrap">
+    <img src="images/storefront-before.png" class="ba-img ba-before" alt="Overflow Coffee storefront before renovation">
+    <img src="images/storefront-after.png" class="ba-img ba-after" alt="Overflow Coffee storefront after renovation with signage" style="clip-path: inset(0 50% 0 0);" id="baAfterImg">
+    <div class="ba-handle" id="baHandle" style="left:50%;">
+      <div class="ba-handle-circle">⇔</div>
+    </div>
+  </div>
+  <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-slider">
+  <div class="ba-labels"><span>Before</span><span>After</span></div>
+</section>
+
+<section id="story">
+  <span class="label-tag">From the Founder</span>
+  <div class="section-rule"></div>
+  <div class="story-grid">
+    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="Founder portrait placeholder">
+    <div class="story-text">
+      <p>"Coffee has always been more than a beverage to me — it's always been a catalyst for connection. People may come for the coffee, but they return because of how they're made to feel."</p>
+      <p>Overflow is designed to become a place woven into the rhythm of everyday life in Multnomah Village — where families, students, entrepreneurs, and friends feel welcomed, known, and inspired to return.</p>
+      <div class="signature">— Kynzey Martini, Founder</div>
+      <a href="about.html" style="display:inline-block; margin-top:16px; font-family:Arial, sans-serif; font-weight:700; color:var(--oxblood); text-decoration:none; border-bottom:2px solid var(--oxblood);">Read the full story →</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <span class="label-tag">Explore</span>
+  <div class="section-rule"></div>
+  <div class="teaser-grid">
+    <div class="teaser-card">
+      <h3>Our Menu</h3>
+      <p>Espresso, drip coffee, cold brew, loose leaf tea, specialty lattes, and ice cream — see what's brewing.</p>
+      <a href="menu.html">View the Menu →</a>
+    </div>
+    <div class="teaser-card">
+      <h3>Our Story</h3>
+      <p>Meet the founder and the vision behind Overflow — hospitality first, coffee second.</p>
+      <a href="about.html">Meet the Founder →</a>
+    </div>
+    <div class="teaser-card">
+      <h3>Back Our Launch</h3>
+      <p>Help us raise $100,000 to open our doors, and pick your reward tier.</p>
+      <a href="crowdfunding.html">See Backer Tiers →</a>
+    </div>
+    <div class="teaser-card">
+      <h3>Visit Us</h3>
+      <p>Find our hours, location, and a live countdown to opening day.</p>
+      <a href="contact.html">Get Directions →</a>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <h2>Fill Your Cup, Share the Overflow</h2>
+  <p>Long after the drinks are finished and the tables are cleared, our hope is that what people remember most is how they felt. Seen. Welcomed. Encouraged. A little more full than when they arrived.</p>
+  <a href="crowdfunding.html" class="btn-primary">Join Us as a Backer</a>
+</div>
+
+<footer>
+  Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  const baSlider = document.getElementById('baSlider');
+  const baAfterImg = document.getElementById('baAfterImg');
+  const baHandle = document.getElementById('baHandle');
+
+  baSlider.addEventListener('input', function(){
+    const val = this.value;
+    baAfterImg.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+    baHandle.style.left = val + '%';
+  });
+</script>
+
+</body>
+</html>
