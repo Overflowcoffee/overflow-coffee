@@ -21,9 +21,10 @@ const TIERS = {
 
 // The top tier is "$2,500+" — an open-ended minimum, so it takes a
 // custom amount from the client instead of a fixed one.
-const CUSTOM_TIER_KEY = 'the_well';
-const CUSTOM_TIER_MIN = 250000; // $2,500.00 minimum, in cents
-const CUSTOM_TIER_NAME = 'The Well';
+const CUSTOM_TIERS = {
+  the_well: { name: 'The Well', min: 250000 }, // $2,500.00 minimum, in cents
+  custom_amount: { name: 'Choose Your Own', min: 500 }, // $5.00 minimum, in cents
+};
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -36,17 +37,18 @@ export default async function handler(req, res) {
 
     let lineItem;
 
-    if (tier === CUSTOM_TIER_KEY) {
+    if (CUSTOM_TIERS[tier]) {
+      const { name, min } = CUSTOM_TIERS[tier];
       const amount = Number(customAmount);
-      if (!Number.isFinite(amount) || Math.round(amount * 100) < CUSTOM_TIER_MIN) {
+      if (!Number.isFinite(amount) || Math.round(amount * 100) < min) {
         return res.status(400).json({
-          error: `Custom pledges must be at least $${(CUSTOM_TIER_MIN / 100).toFixed(2)}`,
+          error: `This pledge must be at least $${(min / 100).toFixed(2)}`,
         });
       }
       lineItem = {
         price_data: {
           currency: 'usd',
-          product_data: { name: `Overflow Coffee Pledge — ${CUSTOM_TIER_NAME}` },
+          product_data: { name: `Overflow Coffee Pledge — ${name}` },
           unit_amount: Math.round(amount * 100),
         },
         quantity: 1,
@@ -71,7 +73,7 @@ export default async function handler(req, res) {
       mode: 'payment',
       payment_method_types: ['card'],
       line_items: [lineItem],
-    success_url: `${origin}/pledge-thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/crowdfunding.html`,
       metadata: {
         tier: tier,
