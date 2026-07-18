@@ -330,9 +330,9 @@ footer a{text-decoration:underline;}
     border-bottom:1px solid rgba(0,0,0,0.06);
   }
   .nav-links.open{
-  display:flex;
-  background:repeating-linear-gradient(to right, var(--cream) 0, var(--cream) 40px, var(--olive) 40px, var(--olive) 80px);
-}
+    display:flex;
+    background:var(--cream);
+  }
   .nav-toggle{display:block;}
   section{padding:60px 6vw;}
 }
