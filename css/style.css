@@ -339,4 +339,9 @@ footer a{text-decoration:underline;}
   }
   .nav-toggle{display:block;}
   section{padding:60px 6vw;}
+  .eyebrow{margin-bottom:32px;}
+  .hero h1{margin-bottom:28px;}
+  .hero p.sub{margin-bottom:44px;}
+  .hero-btns{gap:20px;}
+  .hero-btns .btn-primary, .hero-btns .btn-secondary{margin-bottom:6px;}
 }
