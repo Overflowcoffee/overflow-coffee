@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Visit Us — Overflow Coffee</title>
-<meta name="description" content="Find Overflow Coffee's hours, location, and grand opening countdown in Multnomah Village, Portland, Oregon.">
+<meta name="description" content="Find Overflow Coffee's hours and location in Multnomah Village, Portland, Oregon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <nav>
-<a href="index.html" class="logo"><img src="images/logo.png" alt="Overflow Coffee" style="height:44px; width:auto;"></a>
+<a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
@@ -22,9 +21,7 @@
     <a href="contact.html" class="active">Visit Us</a>
   </div>
   <button class="nav-toggle" id="navToggle">☰</button>
-  <a href="crowdfunding.html" class="nav-cta">Fill Your Cup</a>
 </nav>
-
 <section class="hero" style="min-height:40vh;">
   <div class="hero-blocks">
     <div class="b1"></div><div class="b2"></div>
@@ -33,21 +30,19 @@
     <span class="eyebrow">Multnomah Village, Portland</span>
     <h1>Visit Us</h1>
     <p class="sub">Opening early fall 2026 — we can't wait to welcome you in.</p>
+    <p style="margin-top:-10px; margin-bottom:32px;">
+      <a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener" style="color:var(--cream); font-weight:700; text-decoration:underline;">Follow us on Instagram @overflowcoffee.pdx →</a>
+    </p>
   </div>
 </section>
-
 <section id="countdown" class="alt-bg" style="text-align:center;">
-  <span class="label-tag">Grand Opening Countdown</span>
+  <span class="label-tag">Grand Opening</span>
   <div class="section-rule" style="margin-left:auto; margin-right:auto;"></div>
-  <div class="countdown-grid" id="countdownGrid">
-    <div class="countdown-box"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
-    <div class="countdown-box"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
-    <div class="countdown-box"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
-    <div class="countdown-box"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
+  <div style="display:inline-block; background:#fff; border-radius:20px; padding:40px 60px; box-shadow:0 15px 35px rgba(0,0,0,0.06);">
+    <div style="font-family:'Dancing Script', cursive; font-weight:700; font-size:clamp(2rem, 4vw, 3rem); color:var(--oxblood);">Coming Soon</div>
+    <p style="margin-top:12px; opacity:0.7; font-family:'Poppins', sans-serif;">Early fall 2026 · Follow along on Instagram for updates</p>
   </div>
-  <p style="margin-top:24px; font-size:0.9rem; opacity:0.65; font-family:'Poppins', sans-serif;">Countdown target is a placeholder — update it once your exact grand opening date is confirmed.</p>
 </section>
-
 <section>
   <span class="label-tag">Hours</span>
   <div class="section-rule"></div>
@@ -62,7 +57,6 @@
   </div>
   <p style="margin-top:20px; opacity:0.7; max-width:500px;">Open every day of the week once we launch. Hours may shift slightly as we settle in — check back for updates.</p>
 </section>
-
 <section class="alt-bg">
   <span class="label-tag">Find Us</span>
   <div class="section-rule"></div>
@@ -82,7 +76,6 @@
     </div>
   </div>
 </section>
-
 <section>
   <span class="label-tag">Say Hello</span>
   <div class="section-rule"></div>
@@ -95,47 +88,18 @@
     <button type="submit" class="btn-primary">Send Message</button>
   </form>
 </section>
-
 <div class="closing">
   <h2>See You Soon</h2>
   <p>We're building something for this neighborhood, one cup at a time. Help us get there.</p>
   <a href="crowdfunding.html" class="btn-primary">Help Us Fill More Than Cups →</a>
 </div>
-
 <footer>
   Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
 </footer>
-
 <script>
   document.getElementById('navToggle').addEventListener('click', function(){
     document.getElementById('navLinks').classList.toggle('open');
   });
-
-  const TARGET_DATE = new Date('2026-09-15T07:30:00-07:00').getTime();
-
-  function updateCountdown(){
-    const now = new Date().getTime();
-    const distance = TARGET_DATE - now;
-
-    if (distance < 0) {
-      document.getElementById('countdownGrid').innerHTML = '<p style="font-family:\'Poppins\', sans-serif; font-size:1.2rem;">We\'re open! 🎉</p>';
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById('cd-days').textContent = days;
-    document.getElementById('cd-hours').textContent = hours;
-    document.getElementById('cd-mins').textContent = mins;
-    document.getElementById('cd-secs').textContent = secs;
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
 </script>
-
 </body>
 </html>
