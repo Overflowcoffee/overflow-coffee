@@ -1,0 +1,9 @@
+{
+  "name": "overflow-coffee",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "stripe": "^16.8.0",
+    "micro": "^10.0.1"
+  }
+}
