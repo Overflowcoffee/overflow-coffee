@@ -7,7 +7,7 @@
 <meta name="description" content="Find Overflow Coffee's hours, location, and grand opening countdown in Multnomah Village, Portland, Oregon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -45,7 +45,7 @@
     <div class="countdown-box"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
     <div class="countdown-box"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
   </div>
-  <p style="margin-top:24px; font-size:0.9rem; opacity:0.65; font-family:Arial, sans-serif;">Countdown target is a placeholder — update it once your exact grand opening date is confirmed.</p>
+  <p style="margin-top:24px; font-size:0.9rem; opacity:0.65; font-family:'Poppins', sans-serif;">Countdown target is a placeholder — update it once your exact grand opening date is confirmed.</p>
 </section>
 
 <section>
@@ -56,8 +56,8 @@
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15.5 14"/></svg>
     </div>
     <div>
-      <div style="font-family:Arial, sans-serif; font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; opacity:0.6; margin-bottom:6px;">Open Every Day</div>
-      <div style="font-size:1.9rem; font-weight:700; font-family:Arial, sans-serif; color:var(--oxblood); line-height:1.1;">7:30 AM – 3:00 PM</div>
+      <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; opacity:0.6; margin-bottom:6px;">Open Every Day</div>
+      <div style="font-size:1.9rem; font-weight:700; font-family:'Poppins', sans-serif; color:var(--oxblood); line-height:1.1;">7:30 AM – 3:00 PM</div>
     </div>
   </div>
   <p style="margin-top:20px; opacity:0.7; max-width:500px;">Open every day of the week once we launch. Hours may shift slightly as we settle in — check back for updates.</p>
@@ -118,7 +118,7 @@
     const distance = TARGET_DATE - now;
 
     if (distance < 0) {
-      document.getElementById('countdownGrid').innerHTML = '<p style="font-family:Arial, sans-serif; font-size:1.2rem;">We\'re open! 🎉</p>';
+      document.getElementById('countdownGrid').innerHTML = '<p style="font-family:\'Poppins\', sans-serif; font-size:1.2rem;">We\'re open! 🎉</p>';
       return;
     }
 
