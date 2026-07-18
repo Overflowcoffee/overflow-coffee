@@ -13,7 +13,8 @@
 <body>
 
 <nav>
- <a href="index.html" class="logo"><img src="images/logo.png" alt="Overflow Coffee" style="height:44px; width:auto;"></a>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Overflow Coffee" style="height:44px; width:auto;"></a>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
     <a href="about.html">Our Story</a>
@@ -114,6 +115,15 @@
       </ul>
       <button class="tier-btn" data-tier="the_well" data-custom="true">Become a Founding Supporter</button>
     </div>
+    <div class="tier-card">
+      <div class="tier-amt">Any Amount</div>
+      <div class="tier-name">Choose Your Own</div>
+      <ul>
+        <li>Give whatever feels right to you</li>
+        <li>A heartfelt thank-you from us</li>
+      </ul>
+      <button class="tier-btn" data-tier="custom_amount" data-custom="true" data-min="5">Become a Founding Supporter</button>
+    </div>
   </div>
 </section>
 
@@ -160,11 +170,12 @@
       let customAmount;
 
       if (isCustom) {
-        const input = prompt('How much would you like to give? (minimum $2,500)', '2500');
+        const min = parseFloat(btn.dataset.min || '2500');
+        const input = prompt(`How much would you like to give? (minimum $${min})`, min.toString());
         if (input === null) return;
         customAmount = parseFloat(input);
-        if (!customAmount || customAmount < 2500) {
-          alert('Please enter an amount of at least $2,500.');
+        if (!customAmount || customAmount < min) {
+          alert(`Please enter an amount of at least $${min}.`);
           return;
         }
       }
