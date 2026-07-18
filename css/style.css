@@ -33,6 +33,10 @@ nav{
   border-bottom:1px solid rgba(0,0,0,0.06);
 }
 .logo{font-size:1.6rem; font-weight:700; letter-spacing:0.5px; text-decoration:none; color:var(--ink);}
+.logo-img{height:150px; width:auto; margin:-20px 0; display:block;}
+@media(max-width:900px){
+  .logo-img{height:56px; margin:0;}
+}
 .nav-links{display:flex; gap:28px; font-size:0.95rem;}
 .nav-links a{text-decoration:none; opacity:0.85; transition:opacity .2s;}
 .nav-links a:hover, .nav-links a.active{opacity:1; border-bottom:2px solid var(--oxblood);}
