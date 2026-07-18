@@ -54,9 +54,6 @@
     </div>
   </div>
 </section>
-
-
-
 <section id="tiers" class="alt-bg">
   <span class="label-tag">Backer Tiers</span>
   <div class="section-rule"></div>
@@ -67,7 +64,7 @@
       <ul>
         <li>A thank-you card &amp; one free drink once we're open</li>
       </ul>
-      <a href="#" class="tier-btn">Back This Tier</a>
+      <button class="tier-btn" data-tier="first_drop">Back This Tier</button>
     </div>
     <div class="tier-card">
       <div class="tier-amt">$100</div>
@@ -76,7 +73,7 @@
         <li>Everything above</li>
         <li>An Overflow sticker</li>
       </ul>
-      <a href="#" class="tier-btn">Back This Tier</a>
+      <button class="tier-btn" data-tier="keep_it_flowing">Back This Tier</button>
     </div>
     <div class="tier-card featured">
       <div class="tier-badge">Most Popular</div>
@@ -86,7 +83,7 @@
         <li>Everything above</li>
         <li>An Overflow mug</li>
       </ul>
-      <a href="#" class="tier-btn">Back This Tier</a>
+      <button class="tier-btn" data-tier="full_cup">Back This Tier</button>
     </div>
     <div class="tier-card">
       <div class="tier-amt">$500</div>
@@ -95,7 +92,7 @@
         <li>Everything above</li>
         <li>A bag of Lost &amp; Found coffee</li>
       </ul>
-      <a href="#" class="tier-btn">Back This Tier</a>
+      <button class="tier-btn" data-tier="fill_another_cup">Back This Tier</button>
     </div>
     <div class="tier-card">
       <div class="tier-amt">$1,000</div>
@@ -104,7 +101,7 @@
         <li>Everything above</li>
         <li>An Overflow t-shirt</li>
       </ul>
-      <a href="#" class="tier-btn">Back This Tier</a>
+      <button class="tier-btn" data-tier="the_overflow">Back This Tier</button>
     </div>
     <div class="tier-card">
       <div class="tier-amt">$2,500+</div>
@@ -113,11 +110,53 @@
         <li>Everything above</li>
         <li>50% off drinks, for life</li>
       </ul>
-      <a href="#" class="tier-btn">Back This Tier</a>
+      <button class="tier-btn" data-tier="the_well" data-custom="true">Back This Tier</button>
     </div>
   </div>
 </section>
 
+<script>
+  document.querySelectorAll('.tier-btn').forEach(function (btn) {
+    btn.addEventListener('click', async function () {
+      const tier = btn.dataset.tier;
+      const isCustom = btn.dataset.custom === 'true';
+      let customAmount;
+
+      if (isCustom) {
+        const input = prompt('How much would you like to pledge? (minimum $2,500)', '2500');
+        if (input === null) return;
+        customAmount = parseFloat(input);
+        if (!customAmount || customAmount < 2500) {
+          alert('Please enter an amount of at least $2,500.');
+          return;
+        }
+      }
+
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Redirecting…';
+
+      try {
+        const res = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tier, customAmount }),
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+
+        window.location.href = data.url;
+      } catch (err) {
+        alert(err.message || 'Something went wrong. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  });
+</script>
 <section id="faq">
   <span class="label-tag">Good to Know</span>
   <div class="section-rule"></div>
