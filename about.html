@@ -11,9 +11,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <nav>
-<a href="index.html" class="logo"><img src="images/logo.png" alt="Overflow Coffee" style="height:44px; width:auto;"></a>
+<a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
@@ -22,9 +21,7 @@
     <a href="contact.html">Visit Us</a>
   </div>
   <button class="nav-toggle" id="navToggle">☰</button>
-  <a href="crowdfunding.html" class="nav-cta">Fill Your Cup</a>
 </nav>
-
 <section class="hero" style="min-height:45vh;">
   <div class="hero-blocks">
     <div class="b1"></div><div class="b2"></div>
@@ -35,7 +32,6 @@
     <p class="sub">A coffee shop built on the belief that hospitality has the power to strengthen communities.</p>
   </div>
 </section>
-
 <section id="founder">
   <span class="label-tag">About the Founder</span>
   <div class="section-rule"></div>
@@ -51,7 +47,6 @@
     </div>
   </div>
 </section>
-
 <section class="alt-bg">
   <span class="label-tag">Vision, Mission & Philosophy</span>
   <div class="section-rule"></div>
@@ -70,7 +65,6 @@
     </div>
   </div>
 </section>
-
 <section id="values">
   <span class="label-tag">Our Values</span>
   <div class="section-rule"></div>
@@ -112,22 +106,18 @@
     </div>
   </div>
 </section>
-
 <div class="closing">
   <h2>Fill Your Cup, Share the Overflow</h2>
   <p>Long after the drinks are finished and the tables are cleared, our hope is that what people remember most is how they felt. Seen. Welcomed. Encouraged. A little more full than when they arrived.</p>
   <a href="crowdfunding.html" class="btn-primary">Help Us Fill More Than Cups →</a>
 </div>
-
 <footer>
   Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
 </footer>
-
 <script>
   document.getElementById('navToggle').addEventListener('click', function(){
     document.getElementById('navLinks').classList.toggle('open');
   });
 </script>
-
 </body>
 </html>
