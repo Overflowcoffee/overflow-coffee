@@ -73,7 +73,7 @@ export default async function handler(req, res) {
       mode: 'payment',
       payment_method_types: ['card'],
       line_items: [lineItem],
-      success_url: `${origin}/thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/pledge-thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/crowdfunding.html`,
       metadata: {
         tier: tier,
