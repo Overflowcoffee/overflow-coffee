@@ -80,12 +80,11 @@
   <span class="label-tag">Say Hello</span>
   <div class="section-rule"></div>
   <p style="max-width:600px; margin-bottom:30px; opacity:0.85;">Have a question, a partnership idea, or just want to say hi before we open? Send us a note.</p>
-  <form class="contact-form" style="max-width:500px;" action="https://formspree.io/f/mpqvpnre" method="POST">
-    <input type="hidden" name="_next" value="thank-you.html">
+  <form class="contact-form" id="contactForm" style="max-width:500px;">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" rows="5" placeholder="Your message" required></textarea>
-    <button type="submit" class="btn-primary">Send Message</button>
+    <button type="submit" class="btn-primary" id="contactSubmitBtn">Send Message</button>
   </form>
 </section>
 <div class="closing">
@@ -99,6 +98,34 @@
 <script>
   document.getElementById('navToggle').addEventListener('click', function(){
     document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  const contactForm = document.getElementById('contactForm');
+  const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const originalText = contactSubmitBtn.textContent;
+    contactSubmitBtn.disabled = true;
+    contactSubmitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://formspree.io/f/mpqvpnre', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm),
+      });
+
+      if (res.ok) {
+        window.location.href = 'thank-you.html';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      alert('Something went wrong sending your message. Please try again or email us directly.');
+      contactSubmitBtn.disabled = false;
+      contactSubmitBtn.textContent = originalText;
+    }
   });
 </script>
 </body>
