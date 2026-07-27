@@ -100,9 +100,10 @@
   4. This is already connected to your Formspree form (mrenrkon), so
      submissions will land in your Formspree dashboard / notification
      email automatically. Nothing else to configure.
-  5. The popup waits 2 seconds, then appears once. It won't show again
-     to the same visitor for 7 days. Adjust the TIMING values below to
-     change that.
+  5. The popup waits 4 seconds, then appears once per visit. If someone
+     closes it without signing up, they'll see it again on a future visit.
+     Once someone actually submits their email successfully, it won't show
+     to them again. Adjust SHOW_AFTER_MS below to change the delay.
 -->
 
 <style>
@@ -350,25 +351,22 @@
 
 <script>
 (function () {
-  // ---------- TIMING (change these if you like) ----------
-  var SHOW_AFTER_MS = 2000;
-  var SUPPRESS_DAYS_AFTER_CLOSE = 7;
+  // ---------- TIMING (change this if you like) ----------
+  var SHOW_AFTER_MS = 4000;
 
-  var STORAGE_KEY = 'oc_newsletter_dismissed_at';
+  var STORAGE_KEY = 'oc_newsletter_subscribed';
 
   function shouldShow() {
     try {
-      var last = localStorage.getItem(STORAGE_KEY);
-      if (!last) return true;
-      var elapsedDays = (Date.now() - parseInt(last, 10)) / (1000 * 60 * 60 * 24);
-      return elapsedDays > SUPPRESS_DAYS_AFTER_CLOSE;
+      return localStorage.getItem(STORAGE_KEY) !== 'true';
     } catch (e) {
+      // localStorage unavailable (e.g. private browsing) — just show it
       return true;
     }
   }
 
-  function remember() {
-    try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch (e) {}
+  function rememberSubscribed() {
+    try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
   }
 
   var backdrop = document.getElementById('ocBackdrop');
@@ -388,7 +386,6 @@
     backdrop.classList.remove('oc-visible');
     card.classList.remove('oc-visible');
     document.body.style.overflow = '';
-    remember();
   }
 
   if (shouldShow()) {
@@ -419,7 +416,7 @@
         if (response.ok) {
           formWrap.classList.add('oc-hide');
           success.classList.add('oc-show');
-          remember();
+          rememberSubscribed();
           setTimeout(closePopup, 2600);
         } else {
           submitBtn.disabled = false;
@@ -435,4 +432,3 @@
   });
 })();
 </script>
-</html>
