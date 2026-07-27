@@ -87,7 +87,7 @@
   });
 </script>
 </body>
-  <!--
+<!--
   OVERFLOW COFFEE — Newsletter Signup Popup (brand-matched version)
   ============================================
   HOW TO USE:
@@ -97,8 +97,9 @@
   3. This assumes your existing "images/logo.png" path — since the popup
      lives on the same site, it'll pick up your real logo automatically.
      No need to re-upload anything.
-  4. Connect it to your email service: find the comment marked
-     "CONNECT YOUR EMAIL SERVICE HERE" in the JavaScript.
+  4. This is already connected to your Formspree form (mrenrkon), so
+     submissions will land in your Formspree dashboard / notification
+     email automatically. Nothing else to configure.
   5. The popup waits 2 seconds, then appears once. It won't show again
      to the same visitor for 7 days. Adjust the TIMING values below to
      change that.
@@ -314,7 +315,7 @@
           perks — sent straight to your inbox, no spam.
         </p>
 
-        <form id="ocForm">
+        <form id="ocForm" action="https://formspree.io/f/mrenrkon" method="POST">
           <div class="oc-form-row">
             <input
               class="oc-input"
@@ -350,7 +351,7 @@
 <script>
 (function () {
   // ---------- TIMING (change these if you like) ----------
-  var SHOW_AFTER_MS = 4000;
+  var SHOW_AFTER_MS = 2000;
   var SUPPRESS_DAYS_AFTER_CLOSE = 7;
 
   var STORAGE_KEY = 'oc_newsletter_dismissed_at';
@@ -404,32 +405,33 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = document.getElementById('ocEmail').value;
 
-    // =====================================================
-    // CONNECT YOUR EMAIL SERVICE HERE
-    // =====================================================
-    // OPTION A — Mailchimp / ConvertKit / Squarespace embed form:
-    //   Replace the <form id="ocForm"> tag above with the exact
-    //   <form> tag your provider gives you for an embeddable signup
-    //   form (it includes the right "action" URL and hidden fields).
-    //   Keep the input/button inside it and let it submit normally.
-    //
-    // OPTION B — send it yourself via fetch:
-    //   fetch('https://YOUR-ENDPOINT-HERE', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ email: email })
-    //   });
-    //
-    // Until one of these is wired up, no emails are actually stored.
-    // =====================================================
+    var submitBtn = form.querySelector('.oc-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
-    formWrap.classList.add('oc-hide');
-    success.classList.add('oc-show');
-    remember();
-
-    setTimeout(closePopup, 2600);
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function (response) {
+        if (response.ok) {
+          formWrap.classList.add('oc-hide');
+          success.classList.add('oc-show');
+          remember();
+          setTimeout(closePopup, 2600);
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join us';
+          alert('Something went wrong — please try again in a moment.');
+        }
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join us';
+        alert('Something went wrong — please check your connection and try again.');
+      });
   });
 })();
 </script>
