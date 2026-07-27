@@ -87,4 +87,350 @@
   });
 </script>
 </body>
+  <!--
+  OVERFLOW COFFEE — Newsletter Signup Popup (brand-matched version)
+  ============================================
+  HOW TO USE:
+  1. Copy everything below (style, HTML, and script).
+  2. Paste it right before the closing </body> tag on any page of your site
+     (index.html, menu.html, etc.).
+  3. This assumes your existing "images/logo.png" path — since the popup
+     lives on the same site, it'll pick up your real logo automatically.
+     No need to re-upload anything.
+  4. Connect it to your email service: find the comment marked
+     "CONNECT YOUR EMAIL SERVICE HERE" in the JavaScript.
+  5. The popup waits 4 seconds, then appears once. It won't show again
+     to the same visitor for 7 days. Adjust the TIMING values below to
+     change that.
+-->
+
+<style>
+  .oc-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 33, 24, 0.55); /* --ink, translucent */
+    backdrop-filter: blur(3px);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  .oc-popup-backdrop.oc-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .oc-popup-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%) scale(0.96);
+    width: min(720px, 92vw);
+    max-height: 90vh;
+    overflow: auto;
+    background: #F7F3EC; /* --cream */
+    color: #2B2118; /* --ink */
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.2,.8,.3,1);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+  }
+  .oc-popup-card.oc-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  @media (max-width: 640px) {
+    .oc-popup-card { grid-template-columns: 1fr; width: min(420px, 90vw); }
+    .oc-popup-art { min-height: 130px !important; }
+  }
+
+  /* signature gingham stripe, matching the top of the site and the footer */
+  .oc-stripe {
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(to right, #F7F3EC 0, #F7F3EC 16px, #6F7446 16px, #6F7446 32px);
+  }
+
+  .oc-popup-art {
+    background: #742733; /* --oxblood */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+
+  .oc-popup-art img {
+    max-width: 130px;
+    width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1); /* renders logo in cream so it reads on oxblood */
+  }
+
+  .oc-popup-body {
+    padding: 30px 36px 30px;
+    position: relative;
+  }
+
+  .oc-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(43,33,24,0.06);
+    color: #2B2118;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .oc-close:hover { background: rgba(43,33,24,0.12); }
+  .oc-close:focus-visible { outline: 2px solid #742733; outline-offset: 2px; }
+
+  .oc-eyebrow {
+    display: inline-block;
+    background: #F1D56D; /* --yellow */
+    color: #2B2118;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .oc-headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    letter-spacing: 0.3px;
+    margin: 0 0 12px;
+    color: #742733; /* --oxblood */
+  }
+
+  .oc-subcopy {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #2B2118;
+    opacity: 0.85;
+    margin: 0 0 22px;
+    max-width: 40ch;
+  }
+
+  .oc-form-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 480px) {
+    .oc-form-row { flex-direction: column; }
+  }
+
+  .oc-input {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
+    color: #2B2118;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+  }
+  .oc-input::placeholder { color: #2B2118; opacity: 0.45; }
+  .oc-input:focus {
+    outline: none;
+    border-color: #742733;
+  }
+
+  .oc-submit {
+    background: #742733; /* --oxblood */
+    color: #F7F3EC;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 26px;
+    border-radius: 40px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .oc-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(116,39,51,0.35); }
+  .oc-submit:focus-visible { outline: 2px solid #2B2118; outline-offset: 2px; }
+
+  .oc-finePrint {
+    font-size: 0.78rem;
+    color: #2B2118;
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .oc-success { display: none; }
+  .oc-success.oc-show { display: block; }
+  .oc-form-wrap.oc-hide { display: none; }
+
+  .oc-success-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #6F7446; /* --olive */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+</style>
+
+<div class="oc-popup-backdrop" id="ocBackdrop">
+  <div class="oc-popup-card" id="ocCard" role="dialog" aria-modal="true" aria-labelledby="ocHeadline">
+    <div class="oc-popup-art" aria-hidden="true">
+      <img src="images/logo.png" alt="">
+    </div>
+
+    <div class="oc-popup-body">
+      <button class="oc-close" id="ocClose" aria-label="Close">&times;</button>
+
+      <div class="oc-form-wrap" id="ocFormWrap">
+        <span class="oc-eyebrow">Opening Early Fall 2026</span>
+        <h2 class="oc-headline" id="ocHeadline">STAY UP TO DATE!</h2>
+        <p class="oc-subcopy">
+          Get our opening date, first look at the menu, and founding supporter
+          perks — sent straight to your inbox, no spam.
+        </p>
+
+        <form id="ocForm">
+          <div class="oc-form-row">
+            <input
+              class="oc-input"
+              type="email"
+              id="ocEmail"
+              name="email"
+              placeholder="you@email.com"
+              required
+              aria-label="Email address"
+            />
+            <button class="oc-submit" type="submit">Join us</button>
+          </div>
+          <p class="oc-finePrint">One email a month or less. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
+      <div class="oc-success" id="ocSuccess">
+        <div class="oc-success-badge" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8.5L6.2 11.5L13 4.5" stroke="#F7F3EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="oc-headline">You're on the list.</h2>
+        <p class="oc-subcopy">
+          Thanks for joining us. Keep an eye on your inbox — first news lands soon.
+        </p>
+      </div>
+    </div>
+    <div class="oc-stripe" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ---------- TIMING (change these if you like) ----------
+  var SHOW_AFTER_MS = 4000;
+  var SUPPRESS_DAYS_AFTER_CLOSE = 7;
+
+  var STORAGE_KEY = 'oc_newsletter_dismissed_at';
+
+  function shouldShow() {
+    try {
+      var last = localStorage.getItem(STORAGE_KEY);
+      if (!last) return true;
+      var elapsedDays = (Date.now() - parseInt(last, 10)) / (1000 * 60 * 60 * 24);
+      return elapsedDays > SUPPRESS_DAYS_AFTER_CLOSE;
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function remember() {
+    try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch (e) {}
+  }
+
+  var backdrop = document.getElementById('ocBackdrop');
+  var card = document.getElementById('ocCard');
+  var closeBtn = document.getElementById('ocClose');
+  var form = document.getElementById('ocForm');
+  var formWrap = document.getElementById('ocFormWrap');
+  var success = document.getElementById('ocSuccess');
+
+  function openPopup() {
+    backdrop.classList.add('oc-visible');
+    card.classList.add('oc-visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    backdrop.classList.remove('oc-visible');
+    card.classList.remove('oc-visible');
+    document.body.style.overflow = '';
+    remember();
+  }
+
+  if (shouldShow()) {
+    setTimeout(openPopup, SHOW_AFTER_MS);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closePopup();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && card.classList.contains('oc-visible')) closePopup();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('ocEmail').value;
+
+    // =====================================================
+    // CONNECT YOUR EMAIL SERVICE HERE
+    // =====================================================
+    // OPTION A — Mailchimp / ConvertKit / Squarespace embed form:
+    //   Replace the <form id="ocForm"> tag above with the exact
+    //   <form> tag your provider gives you for an embeddable signup
+    //   form (it includes the right "action" URL and hidden fields).
+    //   Keep the input/button inside it and let it submit normally.
+    //
+    // OPTION B — send it yourself via fetch:
+    //   fetch('https://YOUR-ENDPOINT-HERE', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email: email })
+    //   });
+    //
+    // Until one of these is wired up, no emails are actually stored.
+    // =====================================================
+
+    formWrap.classList.add('oc-hide');
+    success.classList.add('oc-show');
+    remember();
+
+    setTimeout(closePopup, 2600);
+  });
+})();
+</script>
 </html>
