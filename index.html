@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav>
+<div style="background:var(--yellow); color:var(--ink); text-align:center; padding:10px 16px; font-family:'Poppins', sans-serif; font-weight:700; font-size:0.9rem;">
+  🎉 Opening October 10, 2026 — <span id="topCountdown">calculating...</span>
+</div> <nav>
   <a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="active">Home</a>
@@ -86,7 +88,27 @@
     document.getElementById('navLinks').classList.toggle('open');
   });
 </script>
-</body>
+<script>
+  const topTargetDate = new Date('2026-10-10T07:30:00-07:00').getTime();
+
+  function updateTopCountdown(){
+    const now = new Date().getTime();
+    const distance = topTargetDate - now;
+
+    if (distance < 0) {
+      document.getElementById('topCountdown').textContent = "We're open! 🎉";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById('topCountdown').textContent = days + " days, " + hours + " hours to go!";
+  }
+
+  updateTopCountdown();
+  setInterval(updateTopCountdown, 60000);
+</script> </body>
 <!--
   OVERFLOW COFFEE — Newsletter Signup Popup (brand-matched version)
   ============================================
