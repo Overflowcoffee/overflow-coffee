@@ -3,25 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Visit Us — Overflow Coffee</title>
-<meta name="description" content="Find Overflow Coffee's hours and location in Multnomah Village, Portland, Oregon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<title>Visit Us — Overflow Coffee</title>
+<meta name="description" content="Find Overflow Coffee's hours, location, and grand opening countdown in Multnomah Village, Portland, Oregon.">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <nav>
-<a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Overflow Coffee" style="height:44px; width:auto;"></a>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
     <a href="about.html">Our Story</a>
- <a href="crowdfunding.html">Founding Supporters</a>
+    <a href="crowdfunding.html">Back Us</a>
     <a href="contact.html" class="active">Visit Us</a>
   </div>
   <button class="nav-toggle" id="navToggle">☰</button>
+  <a href="crowdfunding.html" class="nav-cta">Fill Your Cup</a>
 </nav>
+
 <section class="hero" style="min-height:40vh;">
   <div class="hero-blocks">
     <div class="b1"></div><div class="b2"></div>
@@ -30,24 +33,36 @@
     <span class="eyebrow">Multnomah Village, Portland</span>
     <h1>Visit Us</h1>
     <p class="sub">Opening early fall 2026 — we can't wait to welcome you in.</p>
-    <p style="margin-top:-10px; margin-bottom:32px;">
-      <a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener" style="color:var(--cream); font-weight:700; text-decoration:underline;">Follow us on Instagram @overflowcoffee.pdx →</a>
-    </p>
   </div>
 </section>
+
 <section id="countdown" class="alt-bg" style="text-align:center;">
-  <span class="label-tag">Grand Opening</span>
+  <span class="label-tag">Grand Opening Countdown</span>
   <div class="section-rule" style="margin-left:auto; margin-right:auto;"></div>
-  <div style="display:inline-block; background:#fff; border-radius:20px; padding:40px 60px; box-shadow:0 15px 35px rgba(0,0,0,0.06);">
-    <div style="font-family:'Dancing Script', cursive; font-weight:700; font-size:clamp(2rem, 4vw, 3rem); color:var(--oxblood);">Coming Soon</div>
-    <p style="margin-top:12px; opacity:0.7; font-family:'Poppins', sans-serif;">Early fall 2026 · Follow along on Instagram for updates</p>
+  <div class="countdown-grid" id="countdownGrid">
+    <div class="countdown-box"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
+    <div class="countdown-box"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+    <div class="countdown-box"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
+    <div class="countdown-box"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
   </div>
+  <p style="margin-top:24px; font-size:0.9rem; opacity:0.75; font-family:'Poppins', sans-serif; max-width:500px; margin-left:auto; margin-right:auto;">*We're working really hard to be open this weekend — stay tuned for updates in case this changes.</p>
 </section>
+
 <section>
   <span class="label-tag">Hours</span>
   <div class="section-rule"></div>
+  <div class="hours-card" style="display:flex; align-items:center; gap:26px; max-width:500px;">
+    <div style="width:72px; height:72px; border-radius:50%; background:var(--oxblood); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15.5 14"/></svg>
+    </div>
+    <div>
+      <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; opacity:0.6; margin-bottom:6px;">Open Every Day</div>
+      <div style="font-size:1.9rem; font-weight:700; font-family:'Poppins', sans-serif; color:var(--oxblood); line-height:1.1;">7:30 AM – 3:00 PM</div>
+    </div>
+  </div>
   <p style="margin-top:20px; opacity:0.7; max-width:500px;">Open every day of the week once we launch. Hours may shift slightly as we settle in — check back for updates.</p>
 </section>
+
 <section class="alt-bg">
   <span class="label-tag">Find Us</span>
   <div class="section-rule"></div>
@@ -61,63 +76,66 @@
       <h3>Location</h3>
       <p>On the corner of Canby & Capitol<br>7650 SW Capitol Hwy<br>Portland, OR 97219</p>
       <h3>Email</h3>
-      <p><a href="mailto:hello@overflowcoffeepdx.com">hello@overflowcoffeepdx.com</a></p>
+      <p><a href="mailto:hello@overflowcoffee.com">hello@overflowcoffee.com</a></p>
       <h3>Follow Along</h3>
       <p><a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener">Instagram</a></p>
     </div>
   </div>
 </section>
+
 <section>
   <span class="label-tag">Say Hello</span>
   <div class="section-rule"></div>
   <p style="max-width:600px; margin-bottom:30px; opacity:0.85;">Have a question, a partnership idea, or just want to say hi before we open? Send us a note.</p>
-  <form class="contact-form" id="contactForm" style="max-width:500px;">
+  <form class="contact-form" style="max-width:500px;" action="https://formspree.io/f/mpqvpnre" method="POST">
+    <input type="hidden" name="_next" value="thank-you.html">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" rows="5" placeholder="Your message" required></textarea>
-    <button type="submit" class="btn-primary" id="contactSubmitBtn">Send Message</button>
+    <button type="submit" class="btn-primary">Send Message</button>
   </form>
 </section>
+
 <div class="closing">
   <h2>See You Soon</h2>
   <p>We're building something for this neighborhood, one cup at a time. Help us get there.</p>
   <a href="crowdfunding.html" class="btn-primary">Help Us Fill More Than Cups →</a>
 </div>
+
 <footer>
   Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
 </footer>
+
 <script>
   document.getElementById('navToggle').addEventListener('click', function(){
     document.getElementById('navLinks').classList.toggle('open');
   });
 
-  const contactForm = document.getElementById('contactForm');
-  const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+  const TARGET_DATE = new Date('2026-10-10T07:30:00-07:00').getTime();
 
-  contactForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const originalText = contactSubmitBtn.textContent;
-    contactSubmitBtn.disabled = true;
-    contactSubmitBtn.textContent = 'Sending…';
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const distance = TARGET_DATE - now;
 
-    try {
-      const res = await fetch('https://formspree.io/f/mpqvpnre', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(contactForm),
-      });
-
-      if (res.ok) {
-        window.location.href = 'thank-you.html';
-      } else {
-        throw new Error('Submission failed');
-      }
-    } catch (err) {
-      alert('Something went wrong sending your message. Please try again or email us directly.');
-      contactSubmitBtn.disabled = false;
-      contactSubmitBtn.textContent = originalText;
+    if (distance < 0) {
+      document.getElementById('countdownGrid').innerHTML = '<p style="font-family:Poppins, sans-serif; font-size:1.2rem;">We\'re open! 🎉</p>';
+      return;
     }
-  });
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours;
+    document.getElementById('cd-mins').textContent = mins;
+    document.getElementById('cd-secs').textContent = secs;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 </script>
+
 </body>
 </html>
