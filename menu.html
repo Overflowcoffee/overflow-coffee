@@ -1,16 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Overflow Coffee Menu</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap">
 <style>
 /* Editorial single-column menu page: full-width maroon intro band with a
    scalloped awning edge, a textured cream reading column, icon-marked
    section heads, and a bean-flanked wordmark. Single committed brand
    look, mirrors the shop's palette rather than its printed card layout. */
-:root{
+.of-menu{
   --maroon:#6E2A35;
   --maroon-deep:#4D1E26;
   --cream:#FBF8F1;
@@ -27,19 +21,20 @@
   color-scheme:light;
 }
 
-*{box-sizing:border-box;}
-html,body{background:var(--cream);}
-body{
+.of-menu,
+.of-menu *{box-sizing:border-box;}
+.of-menu{
   position:relative;
+  background:var(--cream);
   color:var(--ink);
   font-family:var(--label);
   padding-inline:20px;
-  padding-block:0;
+  padding-block:20px;
 }
 /* fine paper grain, carried the full length of the page */
-body::before{
+.of-menu::before{
   content:"";
-  position:fixed;
+  position:absolute;
   inset:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity:0.05;
@@ -74,7 +69,7 @@ body::before{
   background-size:24px 18px;
   background-repeat:repeat-x;
 }
-@keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes of-menu-rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .hero .menu-title{
   font-family:var(--label);
   font-weight:700;
@@ -83,7 +78,7 @@ body::before{
   padding-left:0.5em;
   color:var(--cream);
   margin:0;
-  animation:rise 0.7s ease both;
+  animation:of-menu-rise 0.7s ease both;
 }
 @media (prefers-reduced-motion:reduce){
   .hero .menu-title{animation:none;}
@@ -96,11 +91,11 @@ body::before{
   padding:0 0 10px;
 }
 
-section{
+.of-menu section{
   padding:30px 4px;
   border-bottom:1px solid var(--rule);
 }
-section:last-of-type{border-bottom:none;}
+.of-menu section:last-of-type{border-bottom:none;}
 
 .section-head{
   display:flex;
@@ -363,8 +358,11 @@ section:last-of-type{border-bottom:none;}
   .treat-row{flex-direction:column;align-items:flex-start;}
 }
 </style>
-</head>
-<body>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap">
+
+<div class="of-menu">
+
 <div class="stripe">
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
@@ -563,5 +561,5 @@ section:last-of-type{border-bottom:none;}
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-</body>
-</html>
+
+</div>
