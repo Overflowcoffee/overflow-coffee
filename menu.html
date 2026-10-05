@@ -1,83 +1,567 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu — Overflow Coffee</title>
-<meta name="description" content="Explore the Overflow Coffee menu — espresso drinks, drip coffee, cold brew, loose leaf tea, specialty lattes, and ice cream, coming to Multnomah Village, Portland.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overflow Coffee Menu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+/* Editorial single-column menu page: full-width maroon intro band with a
+   scalloped awning edge, a textured cream reading column, icon-marked
+   section heads, and a bean-flanked wordmark. Single committed brand
+   look, mirrors the shop's palette rather than its printed card layout. */
+:root{
+  --maroon:#6E2A35;
+  --maroon-deep:#4D1E26;
+  --cream:#FBF8F1;
+  --tan:#F0E8D8;
+  --gold:#D7A93C;
+  --gold-soft:#E8D385;
+  --olive:#738150;
+  --ink:#352D27;
+  --ink-soft:#8C8072;
+  --rule:#E3D7C4;
+  --script:'Alex Brush','Brush Script MT',cursive;
+  --display:'Fraunces','Georgia',serif;
+  --label:'Poppins','Segoe UI',system-ui,sans-serif;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box;}
+html,body{background:var(--cream);}
+body{
+  position:relative;
+  color:var(--ink);
+  font-family:var(--label);
+  padding-inline:20px;
+  padding-block:0;
+}
+/* fine paper grain, carried the full length of the page */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.05;
+  mix-blend-mode:multiply;
+  pointer-events:none;
+  z-index:999;
+}
+
+.stripe{
+  height:10px;
+  display:grid;
+  grid-template-columns:repeat(16,1fr);
+}
+.stripe div:nth-child(odd){background:var(--olive);}
+.stripe div:nth-child(even){background:var(--cream);}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  background:var(--maroon);
+  color:var(--cream);
+  text-align:center;
+  padding:24px 20px 28px;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:18px;
+  background-image:radial-gradient(circle at 12px 0, var(--cream) 12px, transparent 13px);
+  background-size:24px 18px;
+  background-repeat:repeat-x;
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.hero .menu-title{
+  font-family:var(--label);
+  font-weight:700;
+  font-size:clamp(20px,4vw,26px);
+  letter-spacing:0.5em;
+  padding-left:0.5em;
+  color:var(--cream);
+  margin:0;
+  animation:rise 0.7s ease both;
+}
+@media (prefers-reduced-motion:reduce){
+  .hero .menu-title{animation:none;}
+}
+
+/* ---------- Reading column ---------- */
+.page{
+  max-width:720px;
+  margin:0 auto;
+  padding:0 0 10px;
+}
+
+section{
+  padding:30px 4px;
+  border-bottom:1px solid var(--rule);
+}
+section:last-of-type{border-bottom:none;}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin:0 0 16px;
+}
+.head-left{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+.sec-icon{
+  flex:none;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--olive);
+  color:var(--cream);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.sec-icon svg{width:15px;height:15px;}
+.script-title{
+  font-family:var(--script);
+  font-size:clamp(26px,4vw,32px);
+  color:var(--maroon);
+  line-height:1;
+  margin:0;
+}
+.section-note{
+  font-size:13px;
+  color:var(--ink-soft);
+  font-style:italic;
+  white-space:nowrap;
+}
+
+/* Featured lattes */
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+}
+.feature-card{
+  background:var(--tan);
+  border-radius:12px;
+  padding:14px 16px 13px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  box-shadow:0 1px 3px rgba(77,30,38,0.07);
+}
+.feature-card .kind{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+}
+.feature-card .kind.seasonal{color:var(--gold);}
+.feature-card .kind.signature{color:var(--olive);}
+.feature-card .name{
+  font-family:var(--display);
+  font-size:18px;
+  font-weight:600;
+  color:var(--maroon-deep);
+}
+.feature-card .desc{
+  font-size:13px;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+.feature-card .addon{
+  align-self:flex-start;
+  margin-top:3px;
+  border:1px solid #CBB98F;
+  border-radius:999px;
+  padding:2px 10px;
+  font-size:10.5px;
+  font-weight:600;
+  color:var(--maroon-deep);
+  background:var(--cream);
+}
+
+/* Plain item lists */
+.list-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:28px;
+  row-gap:0;
+}
+.list-grid.single{grid-template-columns:1fr;}
+.menu-item{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  padding:7px 0;
+  font-weight:600;
+  font-size:14.5px;
+}
+.menu-item + .menu-item{border-top:1px solid var(--rule);}
+.menu-item .tag{
+  font-family:var(--label);
+  font-weight:600;
+  font-size:10.5px;
+  color:var(--olive);
+  text-transform:lowercase;
+}
+
+.subcols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+.subcols h3{
+  font-family:var(--display);
+  font-style:italic;
+  font-weight:600;
+  font-size:14.5px;
+  color:var(--maroon);
+  margin:0 0 2px;
+}
+
+/* Flavors */
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.chip{
+  background:var(--tan);
+  border-radius:999px;
+  padding:6px 15px;
+  font-weight:600;
+  font-size:12.5px;
+  color:var(--ink);
+}
+
+/* Make it yours band */
+.customize{
+  background:var(--tan);
+  border-radius:16px;
+  padding:20px 22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.customize h3{
+  font-family:var(--label);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.18em;
+  color:var(--maroon);
+  text-transform:uppercase;
+  margin:0 0 8px;
+}
+.pill-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.pill{
+  border:1px solid #CBB98F;
+  border-radius:999px;
+  padding:3px 10px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--ink);
+  background:var(--cream);
+}
+.fine{
+  font-size:11px;
+  color:var(--ink-soft);
+  margin:7px 0 0;
+  line-height:1.4;
+}
+
+/* Treats */
+.treat-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.treat-row .subcols{
+  flex:1;
+  min-width:220px;
+}
+.badge{
+  position:relative;
+  flex:0 0 auto;
+  width:108px;
+  height:108px;
+  border-radius:50%;
+  background:var(--gold-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-family:var(--script);
+  font-size:19px;
+  color:var(--maroon-deep);
+  line-height:1.05;
+  transform:rotate(-7deg);
+  box-shadow:0 3px 10px rgba(110,42,53,0.18);
+}
+.badge::before{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border-radius:50%;
+  border:1px dashed rgba(110,42,53,0.35);
+}
+
+/* Footer CTA */
+.cta{
+  text-align:center;
+  padding:30px 20px 36px;
+}
+.cta .signoff-mark{
+  font-family:var(--script);
+  font-size:24px;
+  color:var(--maroon);
+  margin:0 0 2px;
+}
+.cta p.note{
+  font-size:13px;
+  color:var(--ink-soft);
+  margin:0 0 15px;
+}
+.follow-row{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+}
+.arrow{
+  font-size:18px;
+  font-weight:700;
+  color:var(--olive);
+}
+.follow-btn{
+  display:inline-block;
+  background:var(--maroon);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.05em;
+  padding:11px 24px;
+  border-radius:999px;
+}
+
+@media (max-width:700px){
+  .feature-grid{grid-template-columns:1fr;}
+  .list-grid{grid-template-columns:1fr;}
+  .subcols{grid-template-columns:1fr;gap:28px;}
+  .customize{grid-template-columns:1fr;padding:18px 18px;}
+  .treat-row{flex-direction:column;align-items:flex-start;}
+}
+</style>
 </head>
 <body>
-<nav>
-<a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
-  <div class="nav-links" id="navLinks">
-    <a href="index.html">Home</a>
-    <a href="menu.html" class="active">Menu</a>
-    <a href="about.html">Our Story</a>
-    <a href="crowdfunding.html">Founding Supporters</a>
-    <a href="contact.html">Visit Us</a>
-  </div>
-  <button class="nav-toggle" id="navToggle">☰</button>
-</nav>
-<section class="hero" style="min-height:35vh;">
-  <div class="hero-blocks">
-    <div class="b1"></div><div class="b2"></div>
-  </div>
-  <div class="hero-content">
-    <span class="eyebrow">Coming to Multnomah Village</span>
-    <h1>Our Menu</h1>
-    <p class="sub" style="margin-top:10px; margin-bottom:4px; font-weight:700;">Proudly serving Lost &amp; Found Coffee.</p>
-    <p class="sub" style="margin-top:0;">Our beans come from our friends at Lost &amp; Found. Carefully and thoughtfully roasted right here in Portland. <a href="https://www.lostfoundcoffee.com" target="_blank" rel="noopener" style="color:var(--yellow); font-weight:700; text-decoration:none; border-bottom:2px solid var(--yellow);">Read more about them here →</a></p>
-  </div>
-</section>
-<section>
-  <span class="label-tag">Coffee</span>
-  <div class="section-rule"></div>
-  <p style="max-width:600px; opacity:0.75;">Working hard behind the scenes to perfect our menu for launch date.</p>
-</section>
-<section class="alt-bg">
-  <span class="label-tag">Non-Coffee</span>
-  <div class="section-rule"></div>
-  <p style="max-width:600px; opacity:0.75;">Working hard behind the scenes to perfect our menu for launch date.</p>
-</section>
-<section>
-  <span class="label-tag">Loose Leaf Tea</span>
-  <div class="section-rule"></div>
-  <p style="max-width:600px; opacity:0.75;">Working hard behind the scenes to perfect our menu for launch date.</p>
-</section>
-<section class="alt-bg">
-  <span class="label-tag">Treats & Light Bites</span>
-  <div class="section-rule"></div>
-  <div class="value-grid">
-    <div class="value-card">
-      <h3>Ice Cream</h3>
-      <p>Single scoop, double scoop, or an affogato — vanilla bean, chocolate, strawberry, or our rotating seasonal flavor.</p>
-    </div>
-    <div class="value-card" style="border-left-color:var(--olive);">
-      <h3>Rotating Pastries</h3>
-      <p>Fresh baked daily from our friends at Jen's Pastries — the selection changes, but it's always good. <a href="https://www.jenspdx.com" target="_blank" rel="noopener" style="color:var(--oxblood); font-weight:700;">Learn more →</a></p>
-    </div>
-    <div class="value-card" style="border-left-color:var(--clay);">
-      <h3>Light Bites</h3>
-      <p>Coming soon.</p>
-    </div>
-  </div>
-</section>
-<div class="closing">
-  <h2>Taste the Overflow</h2>
-  <p>This menu is just the beginning — help us open our doors so this becomes a real, everyday part of Multnomah Village.</p>
-  <a href="crowdfunding.html" class="btn-primary">Help Us Fill More Than Cups →</a>
+<div class="stripe">
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<footer>
-  Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
-</footer>
-<script>
-  document.getElementById('navToggle').addEventListener('click', function(){
-    document.getElementById('navLinks').classList.toggle('open');
-  });
-</script>
+
+<header class="hero">
+  <p class="menu-title">Menu</p>
+</header>
+
+<div class="page">
+
+  <section>
+    <div class="section-head">
+      <div class="head-left">
+        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1 12.5 7.5 19 10 12.5 12.5 10 19 7.5 12.5 1 10 7.5 7.5Z"/></svg></span>
+        <p class="script-title">specialty lattes</p>
+      </div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="kind seasonal">Seasonal</span>
+        <span class="name">Pumpkin Spice</span>
+        <span class="desc">Pumpkin, maple &amp; warm fall spices</span>
+        <span class="addon">+ Pumpkin Cold Foam</span>
+      </div>
+      <div class="feature-card">
+        <span class="kind seasonal">Seasonal</span>
+        <span class="name">Apple Pie</span>
+        <span class="desc">Warm apple, brown sugar, baking spices</span>
+        <span class="addon">+ Brown Sugar Cold Foam</span>
+      </div>
+      <div class="feature-card">
+        <span class="kind signature">Signature</span>
+        <span class="name">Bee Sting</span>
+        <span class="desc">Real honey &amp; sea salt</span>
+      </div>
+      <div class="feature-card">
+        <span class="kind signature">Signature</span>
+        <span class="name">Sugar &amp; Spice</span>
+        <span class="desc">Vanilla, cardamom &amp; cinnamon</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="head-left">
+        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7H14V13C14 15.2 12.2 17 10 17H8C5.8 17 4 15.2 4 13V7Z"/><path d="M14 8H15.5C16.6 8 17.5 8.9 17.5 10C17.5 11.1 16.6 12 15.5 12H14"/></svg></span>
+        <p class="script-title">coffee</p>
+      </div>
+    </div>
+    <div class="list-grid">
+      <div class="menu-item">Drip</div>
+      <div class="menu-item">Cappuccino <span class="tag">one size</span></div>
+      <div class="menu-item">Espresso <span class="tag">one size</span></div>
+      <div class="menu-item">Latte</div>
+      <div class="menu-item">Americano</div>
+      <div class="menu-item">Mocha</div>
+      <div class="menu-item">Cortado <span class="tag">one size</span></div>
+      <div class="menu-item">Cold Brew</div>
+      <div class="menu-item">Macchiato <span class="tag">one size</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="head-left">
+        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 9 9 4 16 4C16 11 11 16 4 16Z"/><path d="M4 16C7 13 10 10 15 6"/></svg></span>
+        <p class="script-title">non-coffee &amp; tea</p>
+      </div>
+    </div>
+    <div class="subcols">
+      <div>
+        <h3>Non-Coffee</h3>
+        <div class="list-grid single">
+          <div class="menu-item">Matcha Latte</div>
+          <div class="menu-item">Chai Latte</div>
+          <div class="menu-item">London Fog</div>
+          <div class="menu-item">Hot Chocolate</div>
+          <div class="menu-item">Kids Steamer</div>
+        </div>
+      </div>
+      <div>
+        <h3>Loose-Leaf</h3>
+        <div class="list-grid single">
+          <div class="menu-item">Any Tea</div>
+          <div class="menu-item">English Breakfast</div>
+          <div class="menu-item">Earl Grey</div>
+          <div class="menu-item">Sencha</div>
+          <div class="menu-item">Peppermint <span class="tag">caffeine-free</span></div>
+          <div class="menu-item">Lavender Honey <span class="tag">caffeine-free</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="head-left">
+        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3C10 3 15 9.5 15 13A5 5 0 0 1 5 13C5 9.5 10 3 10 3Z"/></svg></span>
+        <p class="script-title">flavors</p>
+      </div>
+      <span class="section-note">add to any drink</span>
+    </div>
+    <div class="chip-row">
+      <span class="chip">Vanilla</span>
+      <span class="chip">Honey</span>
+      <span class="chip">Maple</span>
+      <span class="chip">Cardamom</span>
+      <span class="chip">Lavender</span>
+      <span class="chip">Caramel</span>
+      <span class="chip">Sugar-Free Vanilla</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="head-left">
+        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6H16M4 10H16M4 14H16"/><circle cx="8" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="13" cy="10" r="1.5" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.5" fill="currentColor" stroke="none"/></svg></span>
+        <p class="script-title">make it yours</p>
+      </div>
+    </div>
+    <div class="customize">
+      <div>
+        <h3>Sizes</h3>
+        <p class="fine" style="margin-top:0;">Hot</p>
+        <div class="pill-wrap"><span class="pill">8oz</span><span class="pill">12oz</span><span class="pill">16oz</span></div>
+        <p class="fine">Iced</p>
+        <div class="pill-wrap"><span class="pill">12oz</span><span class="pill">16oz</span><span class="pill">24oz</span></div>
+      </div>
+      <div>
+        <h3>Milks</h3>
+        <div class="pill-wrap">
+          <span class="pill">Whole</span>
+          <span class="pill">Oat</span>
+          <span class="pill">Almond</span>
+          <span class="pill">Non-Fat</span>
+        </div>
+        <p class="fine">No upcharge for alternative milks.</p>
+      </div>
+      <div>
+        <h3>Add-Ons</h3>
+        <div class="pill-wrap">
+          <span class="pill">Collagen Crush</span>
+          <span class="pill">Chagaccino</span>
+          <span class="pill">Cold Foam</span>
+          <span class="pill">Extra Shot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="head-left">
+        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 9.5A3.8 3.8 0 0 1 10 5.5A3.8 3.8 0 0 1 13.8 9.5Z"/><path d="M6.2 9.5H13.8L10 16.8Z"/></svg></span>
+        <p class="script-title">ice cream &amp; pastries</p>
+      </div>
+    </div>
+    <div class="treat-row">
+      <div class="subcols">
+        <div>
+          <h3>Ice Cream</h3>
+          <div class="list-grid single">
+            <div class="menu-item">Single Scoop</div>
+            <div class="menu-item">Double Scoop</div>
+            <div class="menu-item">Affogato</div>
+            <div class="menu-item">Matchagato</div>
+          </div>
+        </div>
+        <div>
+          <h3>Pastries</h3>
+          <div class="list-grid single">
+            <div class="menu-item">Rotating Seasonally</div>
+            <div class="menu-item">Fan Favorites Daily</div>
+          </div>
+        </div>
+      </div>
+      <div class="badge">treat<br>yourself</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="cta">
+  <p class="signoff-mark">Overflow</p>
+  <p class="note">Pricing and opening day are coming soon.</p>
+  <div class="follow-row">
+    <span class="arrow">&#8594;</span>
+    <a class="follow-btn" href="https://www.instagram.com/overflowcoffee.pdx">FOLLOW @overflowcoffee.pdx</a>
+    <span class="arrow">&#8592;</span>
+  </div>
+</div>
+
+<div class="stripe">
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+</div>
 </body>
 </html>
