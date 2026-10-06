@@ -9,43 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap">
 <style>
-/* Editorial single-column menu page: full-width maroon intro band with a
-   scalloped awning edge, a textured cream reading column, icon-marked
-   section heads, and a bean-flanked wordmark. Single committed brand
-   look, mirrors the shop's palette rather than its printed card layout.
-   Every selector below is namespaced with "ofc-" and lives inside the
-   .ofc-menu wrapper, so none of it can collide with existing styles
-   elsewhere on the site. */
-.ofc-menu{
-  --maroon:#6E2A35;
-  --maroon-deep:#4D1E26;
-  --cream:#FBF8F1;
-  --tan:#F0E8D8;
-  --gold:#D7A93C;
-  --gold-soft:#E8D385;
-  --olive:#738150;
-  --ink:#352D27;
-  --ink-soft:#8C8072;
-  --rule:#E3D7C4;
-  --script:'Alex Brush','Brush Script MT',cursive;
-  --display:'Fraunces','Georgia',serif;
-  --label:'Poppins','Segoe UI',system-ui,sans-serif;
-  color-scheme:light;
-}
+/* Overflow Coffee — Menu page styling.
+   Built on top of css/style.css: every color below is one of this
+   site's own CSS variables (--oxblood, --olive, --yellow, --clay,
+   --cream, --ink), the only fonts are the Dancing Script + Poppins
+   already loaded sitewide, and .eyebrow / .label-tag / .closing /
+   .btn-primary are the site's real shared components, reused as-is.
+   Everything with an "ofc-" prefix below is new, menu-page-only
+   styling, namespaced so it can't collide with anything elsewhere. */
 
-.ofc-menu,
-.ofc-menu *{box-sizing:border-box;}
 .ofc-menu{
+  --ofc-tan:#efe8d8;
+  --ofc-rule:rgba(0,0,0,.08);
   position:relative;
-  background:var(--cream);
-  color:var(--ink);
-  font-family:var(--label);
-  padding-inline:20px;
-  padding-block:20px;
 }
-/* fine paper grain, carried the full length of the page */
+/* fine paper grain, carried the length of the menu block */
 .ofc-menu::before{
   content:"";
   position:absolute;
@@ -54,7 +33,7 @@
   opacity:0.05;
   mix-blend-mode:multiply;
   pointer-events:none;
-  z-index:999;
+  z-index:1;
 }
 
 .ofc-stripe{
@@ -68,11 +47,14 @@
 /* ---------- Hero ---------- */
 .ofc-hero{
   position:relative;
-  background:var(--maroon);
+  background:var(--oxblood);
   color:var(--cream);
   text-align:center;
-  padding:24px 20px 28px;
+  padding:44px 20px 34px;
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 .ofc-hero::after{
   content:"";
@@ -83,31 +65,31 @@
   background-size:24px 18px;
   background-repeat:repeat-x;
 }
+.ofc-hero .eyebrow{margin-bottom:18px;}
 @keyframes ofc-menu-rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.ofc-hero .ofc-menu-title{
-  font-family:var(--label);
+.ofc-menu-title{
+  font-family:'Dancing Script', cursive;
   font-weight:700;
-  font-size:clamp(20px,4vw,26px);
-  letter-spacing:0.5em;
-  padding-left:0.5em;
+  font-size:clamp(2.6rem,7vw,4.4rem);
+  line-height:1;
   color:var(--cream);
-  margin:0;
+  margin:0 0 6px;
   animation:ofc-menu-rise 0.7s ease both;
 }
 @media (prefers-reduced-motion:reduce){
-  .ofc-hero .ofc-menu-title{animation:none;}
+  .ofc-menu-title{animation:none;}
 }
 
 /* ---------- Reading column ---------- */
 .ofc-page{
   max-width:720px;
   margin:0 auto;
-  padding:0 0 10px;
+  padding:50px 20px 10px;
 }
 
 .ofc-menu section{
   padding:30px 4px;
-  border-bottom:1px solid var(--rule);
+  border-bottom:1px solid var(--ofc-rule);
 }
 .ofc-menu section:last-of-type{border-bottom:none;}
 
@@ -136,15 +118,17 @@
 }
 .ofc-sec-icon svg{width:15px;height:15px;}
 .ofc-script-title{
-  font-family:var(--script);
-  font-size:clamp(26px,4vw,32px);
-  color:var(--maroon);
+  font-family:'Dancing Script', cursive;
+  font-weight:700;
+  font-size:clamp(1.7rem,4vw,2.3rem);
+  color:var(--oxblood);
   line-height:1;
   margin:0;
 }
 .ofc-section-note{
   font-size:13px;
-  color:var(--ink-soft);
+  color:var(--ink);
+  opacity:.6;
   font-style:italic;
   white-space:nowrap;
 }
@@ -156,13 +140,13 @@
   gap:11px;
 }
 .ofc-feature-card{
-  background:var(--tan);
+  background:var(--ofc-tan);
   border-radius:12px;
   padding:14px 16px 13px;
   display:flex;
   flex-direction:column;
   gap:4px;
-  box-shadow:0 1px 3px rgba(77,30,38,0.07);
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
 }
 .ofc-feature-card .ofc-kind{
   font-size:10px;
@@ -170,28 +154,29 @@
   letter-spacing:0.18em;
   text-transform:uppercase;
 }
-.ofc-feature-card .ofc-kind.ofc-seasonal{color:var(--gold);}
+.ofc-feature-card .ofc-kind.ofc-seasonal{color:var(--clay);}
 .ofc-feature-card .ofc-kind.ofc-signature{color:var(--olive);}
 .ofc-feature-card .ofc-name{
-  font-family:var(--display);
+  font-family:'Poppins', sans-serif;
   font-size:18px;
-  font-weight:600;
-  color:var(--maroon-deep);
+  font-weight:700;
+  color:var(--oxblood);
 }
 .ofc-feature-card .ofc-desc{
   font-size:13px;
   line-height:1.45;
-  color:var(--ink-soft);
+  color:var(--ink);
+  opacity:.7;
 }
 .ofc-feature-card .ofc-addon{
   align-self:flex-start;
   margin-top:3px;
-  border:1px solid #CBB98F;
+  border:1px solid rgba(0,0,0,.15);
   border-radius:999px;
   padding:2px 10px;
   font-size:10.5px;
   font-weight:600;
-  color:var(--maroon-deep);
+  color:var(--oxblood);
   background:var(--cream);
 }
 
@@ -211,9 +196,9 @@
   font-weight:600;
   font-size:14.5px;
 }
-.ofc-menu-item + .ofc-menu-item{border-top:1px solid var(--rule);}
+.ofc-menu-item + .ofc-menu-item{border-top:1px solid var(--ofc-rule);}
 .ofc-menu-item .ofc-tag{
-  font-family:var(--label);
+  font-family:'Poppins', sans-serif;
   font-weight:600;
   font-size:10.5px;
   color:var(--olive);
@@ -226,32 +211,26 @@
   gap:28px;
 }
 .ofc-subcols h3{
-  font-family:var(--display);
-  font-style:italic;
-  font-weight:600;
-  font-size:14.5px;
-  color:var(--maroon);
-  margin:0 0 2px;
+  font-family:'Poppins', sans-serif;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--oxblood);
+  margin:0 0 6px;
 }
 
-/* Flavors */
+/* Flavors — reuses the site's real .label-tag component as chips */
 .ofc-chip-row{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
 }
-.ofc-chip{
-  background:var(--tan);
-  border-radius:999px;
-  padding:6px 15px;
-  font-weight:600;
-  font-size:12.5px;
-  color:var(--ink);
-}
+.ofc-chip-row .label-tag{margin-bottom:0;}
 
 /* Make it yours band */
 .ofc-customize{
-  background:var(--tan);
+  background:var(--ofc-tan);
   border-radius:16px;
   padding:20px 22px;
   display:grid;
@@ -259,11 +238,11 @@
   gap:18px;
 }
 .ofc-customize h3{
-  font-family:var(--label);
+  font-family:'Poppins', sans-serif;
   font-size:11px;
   font-weight:700;
   letter-spacing:0.18em;
-  color:var(--maroon);
+  color:var(--oxblood);
   text-transform:uppercase;
   margin:0 0 8px;
 }
@@ -273,7 +252,7 @@
   gap:6px;
 }
 .ofc-pill{
-  border:1px solid #CBB98F;
+  border:1px solid rgba(0,0,0,.15);
   border-radius:999px;
   padding:3px 10px;
   font-size:12px;
@@ -283,7 +262,8 @@
 }
 .ofc-fine{
   font-size:11px;
-  color:var(--ink-soft);
+  color:var(--ink);
+  opacity:.6;
   margin:7px 0 0;
   line-height:1.4;
 }
@@ -306,62 +286,25 @@
   width:108px;
   height:108px;
   border-radius:50%;
-  background:var(--gold-soft);
+  background:var(--yellow);
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  font-family:var(--script);
-  font-size:19px;
-  color:var(--maroon-deep);
+  font-family:'Dancing Script', cursive;
+  font-weight:700;
+  font-size:21px;
+  color:var(--oxblood);
   line-height:1.05;
   transform:rotate(-7deg);
-  box-shadow:0 3px 10px rgba(110,42,53,0.18);
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
 }
 .ofc-badge::before{
   content:"";
   position:absolute;
   inset:9px;
   border-radius:50%;
-  border:1px dashed rgba(110,42,53,0.35);
-}
-
-/* Footer CTA */
-.ofc-cta{
-  text-align:center;
-  padding:30px 20px 36px;
-}
-.ofc-cta .ofc-signoff-mark{
-  font-family:var(--script);
-  font-size:24px;
-  color:var(--maroon);
-  margin:0 0 2px;
-}
-.ofc-cta p.ofc-note{
-  font-size:13px;
-  color:var(--ink-soft);
-  margin:0 0 15px;
-}
-.ofc-follow-row{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-}
-.ofc-arrow{
-  font-size:18px;
-  font-weight:700;
-  color:var(--olive);
-}
-.ofc-follow-btn{
-  display:inline-block;
-  background:var(--maroon);
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  font-size:12px;
-  letter-spacing:0.05em;
-  padding:11px 24px;
-  border-radius:999px;
+  border:1px dashed rgba(116,39,51,0.35);
 }
 
 @media (max-width:700px){
@@ -394,6 +337,7 @@
 </div>
 
 <header class="ofc-hero">
+  <span class="eyebrow">Multnomah Village, Portland</span>
   <p class="ofc-menu-title">Menu</p>
 </header>
 
@@ -493,13 +437,13 @@
       <span class="ofc-section-note">add to any drink</span>
     </div>
     <div class="ofc-chip-row">
-      <span class="ofc-chip">Vanilla</span>
-      <span class="ofc-chip">Honey</span>
-      <span class="ofc-chip">Maple</span>
-      <span class="ofc-chip">Cardamom</span>
-      <span class="ofc-chip">Lavender</span>
-      <span class="ofc-chip">Caramel</span>
-      <span class="ofc-chip">Sugar-Free Vanilla</span>
+      <span class="label-tag">Vanilla</span>
+      <span class="label-tag">Honey</span>
+      <span class="label-tag">Maple</span>
+      <span class="label-tag">Cardamom</span>
+      <span class="label-tag">Lavender</span>
+      <span class="label-tag">Caramel</span>
+      <span class="label-tag">Sugar-Free Vanilla</span>
     </div>
   </section>
 
@@ -572,21 +516,24 @@
 
 </div>
 
-<div class="ofc-cta">
-  <p class="ofc-signoff-mark">Overflow</p>
-  <p class="ofc-note">Pricing and opening day are coming soon.</p>
-  <div class="ofc-follow-row">
-    <span class="ofc-arrow">&#8594;</span>
-    <a class="ofc-follow-btn" href="https://www.instagram.com/overflowcoffee.pdx">FOLLOW @overflowcoffee.pdx</a>
-    <span class="ofc-arrow">&#8592;</span>
-  </div>
-</div>
-
-<div class="ofc-stripe">
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-</div>
+<section class="closing">
+  <h2>Overflow</h2>
+  <p>Pricing and our opening day are coming soon. Follow along for the latest.</p>
+  <a class="btn-primary" href="https://www.instagram.com/overflowcoffee.pdx">Follow @overflowcoffee.pdx</a>
+</section>
 
 </div>
+
+<footer>
+  &copy; Overflow Coffee &middot; Multnomah Village, Portland &middot; <a href="https://www.instagram.com/overflowcoffee.pdx">@overflowcoffee.pdx</a>
+</footer>
+
+<script>
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+}
+</script>
 </body>
 </html>
