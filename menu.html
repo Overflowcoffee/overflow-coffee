@@ -1,10 +1,24 @@
-<title>Overflow Coffee Menu</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Overflow Coffee</title>
+<meta name="description" content="See what's pouring at Overflow Coffee — coffee, non-coffee drinks, loose-leaf tea, ice cream, and pastries at our neighborhood coffee shop in Multnomah Village, Portland.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap">
 <style>
 /* Editorial single-column menu page: full-width maroon intro band with a
    scalloped awning edge, a textured cream reading column, icon-marked
    section heads, and a bean-flanked wordmark. Single committed brand
-   look, mirrors the shop's palette rather than its printed card layout. */
-.of-menu{
+   look, mirrors the shop's palette rather than its printed card layout.
+   Every selector below is namespaced with "ofc-" and lives inside the
+   .ofc-menu wrapper, so none of it can collide with existing styles
+   elsewhere on the site. */
+.ofc-menu{
   --maroon:#6E2A35;
   --maroon-deep:#4D1E26;
   --cream:#FBF8F1;
@@ -21,9 +35,9 @@
   color-scheme:light;
 }
 
-.of-menu,
-.of-menu *{box-sizing:border-box;}
-.of-menu{
+.ofc-menu,
+.ofc-menu *{box-sizing:border-box;}
+.ofc-menu{
   position:relative;
   background:var(--cream);
   color:var(--ink);
@@ -32,7 +46,7 @@
   padding-block:20px;
 }
 /* fine paper grain, carried the full length of the page */
-.of-menu::before{
+.ofc-menu::before{
   content:"";
   position:absolute;
   inset:0;
@@ -43,16 +57,16 @@
   z-index:999;
 }
 
-.stripe{
+.ofc-stripe{
   height:10px;
   display:grid;
   grid-template-columns:repeat(16,1fr);
 }
-.stripe div:nth-child(odd){background:var(--olive);}
-.stripe div:nth-child(even){background:var(--cream);}
+.ofc-stripe div:nth-child(odd){background:var(--olive);}
+.ofc-stripe div:nth-child(even){background:var(--cream);}
 
 /* ---------- Hero ---------- */
-.hero{
+.ofc-hero{
   position:relative;
   background:var(--maroon);
   color:var(--cream);
@@ -60,7 +74,7 @@
   padding:24px 20px 28px;
   overflow:hidden;
 }
-.hero::after{
+.ofc-hero::after{
   content:"";
   position:absolute;
   left:0; right:0; bottom:0;
@@ -69,8 +83,8 @@
   background-size:24px 18px;
   background-repeat:repeat-x;
 }
-@keyframes of-menu-rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.hero .menu-title{
+@keyframes ofc-menu-rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.ofc-hero .ofc-menu-title{
   font-family:var(--label);
   font-weight:700;
   font-size:clamp(20px,4vw,26px);
@@ -78,38 +92,38 @@
   padding-left:0.5em;
   color:var(--cream);
   margin:0;
-  animation:of-menu-rise 0.7s ease both;
+  animation:ofc-menu-rise 0.7s ease both;
 }
 @media (prefers-reduced-motion:reduce){
-  .hero .menu-title{animation:none;}
+  .ofc-hero .ofc-menu-title{animation:none;}
 }
 
 /* ---------- Reading column ---------- */
-.page{
+.ofc-page{
   max-width:720px;
   margin:0 auto;
   padding:0 0 10px;
 }
 
-.of-menu section{
+.ofc-menu section{
   padding:30px 4px;
   border-bottom:1px solid var(--rule);
 }
-.of-menu section:last-of-type{border-bottom:none;}
+.ofc-menu section:last-of-type{border-bottom:none;}
 
-.section-head{
+.ofc-section-head{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
   margin:0 0 16px;
 }
-.head-left{
+.ofc-head-left{
   display:flex;
   align-items:center;
   gap:11px;
 }
-.sec-icon{
+.ofc-sec-icon{
   flex:none;
   width:28px;
   height:28px;
@@ -120,15 +134,15 @@
   align-items:center;
   justify-content:center;
 }
-.sec-icon svg{width:15px;height:15px;}
-.script-title{
+.ofc-sec-icon svg{width:15px;height:15px;}
+.ofc-script-title{
   font-family:var(--script);
   font-size:clamp(26px,4vw,32px);
   color:var(--maroon);
   line-height:1;
   margin:0;
 }
-.section-note{
+.ofc-section-note{
   font-size:13px;
   color:var(--ink-soft);
   font-style:italic;
@@ -136,12 +150,12 @@
 }
 
 /* Featured lattes */
-.feature-grid{
+.ofc-feature-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:11px;
 }
-.feature-card{
+.ofc-feature-card{
   background:var(--tan);
   border-radius:12px;
   padding:14px 16px 13px;
@@ -150,26 +164,26 @@
   gap:4px;
   box-shadow:0 1px 3px rgba(77,30,38,0.07);
 }
-.feature-card .kind{
+.ofc-feature-card .ofc-kind{
   font-size:10px;
   font-weight:700;
   letter-spacing:0.18em;
   text-transform:uppercase;
 }
-.feature-card .kind.seasonal{color:var(--gold);}
-.feature-card .kind.signature{color:var(--olive);}
-.feature-card .name{
+.ofc-feature-card .ofc-kind.ofc-seasonal{color:var(--gold);}
+.ofc-feature-card .ofc-kind.ofc-signature{color:var(--olive);}
+.ofc-feature-card .ofc-name{
   font-family:var(--display);
   font-size:18px;
   font-weight:600;
   color:var(--maroon-deep);
 }
-.feature-card .desc{
+.ofc-feature-card .ofc-desc{
   font-size:13px;
   line-height:1.45;
   color:var(--ink-soft);
 }
-.feature-card .addon{
+.ofc-feature-card .ofc-addon{
   align-self:flex-start;
   margin-top:3px;
   border:1px solid #CBB98F;
@@ -182,14 +196,14 @@
 }
 
 /* Plain item lists */
-.list-grid{
+.ofc-list-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   column-gap:28px;
   row-gap:0;
 }
-.list-grid.single{grid-template-columns:1fr;}
-.menu-item{
+.ofc-list-grid.ofc-single{grid-template-columns:1fr;}
+.ofc-menu-item{
   display:flex;
   align-items:baseline;
   gap:8px;
@@ -197,8 +211,8 @@
   font-weight:600;
   font-size:14.5px;
 }
-.menu-item + .menu-item{border-top:1px solid var(--rule);}
-.menu-item .tag{
+.ofc-menu-item + .ofc-menu-item{border-top:1px solid var(--rule);}
+.ofc-menu-item .ofc-tag{
   font-family:var(--label);
   font-weight:600;
   font-size:10.5px;
@@ -206,12 +220,12 @@
   text-transform:lowercase;
 }
 
-.subcols{
+.ofc-subcols{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:28px;
 }
-.subcols h3{
+.ofc-subcols h3{
   font-family:var(--display);
   font-style:italic;
   font-weight:600;
@@ -221,12 +235,12 @@
 }
 
 /* Flavors */
-.chip-row{
+.ofc-chip-row{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
 }
-.chip{
+.ofc-chip{
   background:var(--tan);
   border-radius:999px;
   padding:6px 15px;
@@ -236,7 +250,7 @@
 }
 
 /* Make it yours band */
-.customize{
+.ofc-customize{
   background:var(--tan);
   border-radius:16px;
   padding:20px 22px;
@@ -244,7 +258,7 @@
   grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
-.customize h3{
+.ofc-customize h3{
   font-family:var(--label);
   font-size:11px;
   font-weight:700;
@@ -253,12 +267,12 @@
   text-transform:uppercase;
   margin:0 0 8px;
 }
-.pill-wrap{
+.ofc-pill-wrap{
   display:flex;
   flex-wrap:wrap;
   gap:6px;
 }
-.pill{
+.ofc-pill{
   border:1px solid #CBB98F;
   border-radius:999px;
   padding:3px 10px;
@@ -267,7 +281,7 @@
   color:var(--ink);
   background:var(--cream);
 }
-.fine{
+.ofc-fine{
   font-size:11px;
   color:var(--ink-soft);
   margin:7px 0 0;
@@ -275,18 +289,18 @@
 }
 
 /* Treats */
-.treat-row{
+.ofc-treat-row{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
   gap:28px;
   flex-wrap:wrap;
 }
-.treat-row .subcols{
+.ofc-treat-row .ofc-subcols{
   flex:1;
   min-width:220px;
 }
-.badge{
+.ofc-badge{
   position:relative;
   flex:0 0 auto;
   width:108px;
@@ -304,7 +318,7 @@
   transform:rotate(-7deg);
   box-shadow:0 3px 10px rgba(110,42,53,0.18);
 }
-.badge::before{
+.ofc-badge::before{
   content:"";
   position:absolute;
   inset:9px;
@@ -313,32 +327,32 @@
 }
 
 /* Footer CTA */
-.cta{
+.ofc-cta{
   text-align:center;
   padding:30px 20px 36px;
 }
-.cta .signoff-mark{
+.ofc-cta .ofc-signoff-mark{
   font-family:var(--script);
   font-size:24px;
   color:var(--maroon);
   margin:0 0 2px;
 }
-.cta p.note{
+.ofc-cta p.ofc-note{
   font-size:13px;
   color:var(--ink-soft);
   margin:0 0 15px;
 }
-.follow-row{
+.ofc-follow-row{
   display:inline-flex;
   align-items:center;
   gap:12px;
 }
-.arrow{
+.ofc-arrow{
   font-size:18px;
   font-weight:700;
   color:var(--olive);
 }
-.follow-btn{
+.ofc-follow-btn{
   display:inline-block;
   background:var(--maroon);
   color:#fff;
@@ -351,215 +365,228 @@
 }
 
 @media (max-width:700px){
-  .feature-grid{grid-template-columns:1fr;}
-  .list-grid{grid-template-columns:1fr;}
-  .subcols{grid-template-columns:1fr;gap:28px;}
-  .customize{grid-template-columns:1fr;padding:18px 18px;}
-  .treat-row{flex-direction:column;align-items:flex-start;}
+  .ofc-feature-grid{grid-template-columns:1fr;}
+  .ofc-list-grid{grid-template-columns:1fr;}
+  .ofc-subcols{grid-template-columns:1fr;gap:28px;}
+  .ofc-customize{grid-template-columns:1fr;padding:18px 18px;}
+  .ofc-treat-row{flex-direction:column;align-items:flex-start;}
 }
 </style>
+</head>
+<body>
+<nav>
+<a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="menu.html" class="active">Menu</a>
+    <a href="about.html">Our Story</a>
+ <a href="crowdfunding.html">Founding Supporters</a>
+    <a href="contact.html">Visit Us</a>
+  </div>
+  <button class="nav-toggle" id="navToggle">☰</button>
+</nav>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap">
+<div class="ofc-menu">
 
-<div class="of-menu">
-
-<div class="stripe">
+<div class="ofc-stripe">
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 
-<header class="hero">
-  <p class="menu-title">Menu</p>
+<header class="ofc-hero">
+  <p class="ofc-menu-title">Menu</p>
 </header>
 
-<div class="page">
+<div class="ofc-page">
 
   <section>
-    <div class="section-head">
-      <div class="head-left">
-        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1 12.5 7.5 19 10 12.5 12.5 10 19 7.5 12.5 1 10 7.5 7.5Z"/></svg></span>
-        <p class="script-title">specialty lattes</p>
+    <div class="ofc-section-head">
+      <div class="ofc-head-left">
+        <span class="ofc-sec-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1 12.5 7.5 19 10 12.5 12.5 10 19 7.5 12.5 1 10 7.5 7.5Z"/></svg></span>
+        <p class="ofc-script-title">specialty lattes</p>
       </div>
     </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <span class="kind seasonal">Seasonal</span>
-        <span class="name">Pumpkin Spice</span>
-        <span class="desc">Pumpkin, maple &amp; warm fall spices</span>
-        <span class="addon">+ Pumpkin Cold Foam</span>
+    <div class="ofc-feature-grid">
+      <div class="ofc-feature-card">
+        <span class="ofc-kind ofc-seasonal">Seasonal</span>
+        <span class="ofc-name">Pumpkin Spice</span>
+        <span class="ofc-desc">Pumpkin, maple &amp; warm fall spices</span>
+        <span class="ofc-addon">+ Pumpkin Cold Foam</span>
       </div>
-      <div class="feature-card">
-        <span class="kind seasonal">Seasonal</span>
-        <span class="name">Apple Pie</span>
-        <span class="desc">Warm apple, brown sugar, baking spices</span>
-        <span class="addon">+ Brown Sugar Cold Foam</span>
+      <div class="ofc-feature-card">
+        <span class="ofc-kind ofc-seasonal">Seasonal</span>
+        <span class="ofc-name">Apple Pie</span>
+        <span class="ofc-desc">Warm apple, brown sugar, baking spices</span>
+        <span class="ofc-addon">+ Brown Sugar Cold Foam</span>
       </div>
-      <div class="feature-card">
-        <span class="kind signature">Signature</span>
-        <span class="name">Bee Sting</span>
-        <span class="desc">Real honey &amp; sea salt</span>
+      <div class="ofc-feature-card">
+        <span class="ofc-kind ofc-signature">Signature</span>
+        <span class="ofc-name">Bee Sting</span>
+        <span class="ofc-desc">Real honey &amp; sea salt</span>
       </div>
-      <div class="feature-card">
-        <span class="kind signature">Signature</span>
-        <span class="name">Sugar &amp; Spice</span>
-        <span class="desc">Vanilla, cardamom &amp; cinnamon</span>
+      <div class="ofc-feature-card">
+        <span class="ofc-kind ofc-signature">Signature</span>
+        <span class="ofc-name">Sugar &amp; Spice</span>
+        <span class="ofc-desc">Vanilla, cardamom &amp; cinnamon</span>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <div class="head-left">
-        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7H14V13C14 15.2 12.2 17 10 17H8C5.8 17 4 15.2 4 13V7Z"/><path d="M14 8H15.5C16.6 8 17.5 8.9 17.5 10C17.5 11.1 16.6 12 15.5 12H14"/></svg></span>
-        <p class="script-title">coffee</p>
+    <div class="ofc-section-head">
+      <div class="ofc-head-left">
+        <span class="ofc-sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7H14V13C14 15.2 12.2 17 10 17H8C5.8 17 4 15.2 4 13V7Z"/><path d="M14 8H15.5C16.6 8 17.5 8.9 17.5 10C17.5 11.1 16.6 12 15.5 12H14"/></svg></span>
+        <p class="ofc-script-title">coffee</p>
       </div>
     </div>
-    <div class="list-grid">
-      <div class="menu-item">Drip</div>
-      <div class="menu-item">Cappuccino <span class="tag">one size</span></div>
-      <div class="menu-item">Espresso <span class="tag">one size</span></div>
-      <div class="menu-item">Latte</div>
-      <div class="menu-item">Americano</div>
-      <div class="menu-item">Mocha</div>
-      <div class="menu-item">Cortado <span class="tag">one size</span></div>
-      <div class="menu-item">Cold Brew</div>
-      <div class="menu-item">Macchiato <span class="tag">one size</span></div>
+    <div class="ofc-list-grid">
+      <div class="ofc-menu-item">Drip</div>
+      <div class="ofc-menu-item">Cappuccino <span class="ofc-tag">one size</span></div>
+      <div class="ofc-menu-item">Espresso <span class="ofc-tag">one size</span></div>
+      <div class="ofc-menu-item">Latte</div>
+      <div class="ofc-menu-item">Americano</div>
+      <div class="ofc-menu-item">Mocha</div>
+      <div class="ofc-menu-item">Cortado <span class="ofc-tag">one size</span></div>
+      <div class="ofc-menu-item">Cold Brew</div>
+      <div class="ofc-menu-item">Macchiato <span class="ofc-tag">one size</span></div>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <div class="head-left">
-        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 9 9 4 16 4C16 11 11 16 4 16Z"/><path d="M4 16C7 13 10 10 15 6"/></svg></span>
-        <p class="script-title">non-coffee &amp; tea</p>
+    <div class="ofc-section-head">
+      <div class="ofc-head-left">
+        <span class="ofc-sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 9 9 4 16 4C16 11 11 16 4 16Z"/><path d="M4 16C7 13 10 10 15 6"/></svg></span>
+        <p class="ofc-script-title">non-coffee &amp; tea</p>
       </div>
     </div>
-    <div class="subcols">
+    <div class="ofc-subcols">
       <div>
         <h3>Non-Coffee</h3>
-        <div class="list-grid single">
-          <div class="menu-item">Matcha Latte</div>
-          <div class="menu-item">Chai Latte</div>
-          <div class="menu-item">London Fog</div>
-          <div class="menu-item">Hot Chocolate</div>
-          <div class="menu-item">Kids Steamer</div>
+        <div class="ofc-list-grid ofc-single">
+          <div class="ofc-menu-item">Matcha Latte</div>
+          <div class="ofc-menu-item">Chai Latte</div>
+          <div class="ofc-menu-item">London Fog</div>
+          <div class="ofc-menu-item">Hot Chocolate</div>
+          <div class="ofc-menu-item">Kids Steamer</div>
         </div>
       </div>
       <div>
         <h3>Loose-Leaf</h3>
-        <div class="list-grid single">
-          <div class="menu-item">Any Tea</div>
-          <div class="menu-item">English Breakfast</div>
-          <div class="menu-item">Earl Grey</div>
-          <div class="menu-item">Sencha</div>
-          <div class="menu-item">Peppermint <span class="tag">caffeine-free</span></div>
-          <div class="menu-item">Lavender Honey <span class="tag">caffeine-free</span></div>
+        <div class="ofc-list-grid ofc-single">
+          <div class="ofc-menu-item">Any Tea</div>
+          <div class="ofc-menu-item">English Breakfast</div>
+          <div class="ofc-menu-item">Earl Grey</div>
+          <div class="ofc-menu-item">Sencha</div>
+          <div class="ofc-menu-item">Peppermint <span class="ofc-tag">caffeine-free</span></div>
+          <div class="ofc-menu-item">Lavender Honey <span class="ofc-tag">caffeine-free</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <div class="head-left">
-        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3C10 3 15 9.5 15 13A5 5 0 0 1 5 13C5 9.5 10 3 10 3Z"/></svg></span>
-        <p class="script-title">flavors</p>
+    <div class="ofc-section-head">
+      <div class="ofc-head-left">
+        <span class="ofc-sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3C10 3 15 9.5 15 13A5 5 0 0 1 5 13C5 9.5 10 3 10 3Z"/></svg></span>
+        <p class="ofc-script-title">flavors</p>
       </div>
-      <span class="section-note">add to any drink</span>
+      <span class="ofc-section-note">add to any drink</span>
     </div>
-    <div class="chip-row">
-      <span class="chip">Vanilla</span>
-      <span class="chip">Honey</span>
-      <span class="chip">Maple</span>
-      <span class="chip">Cardamom</span>
-      <span class="chip">Lavender</span>
-      <span class="chip">Caramel</span>
-      <span class="chip">Sugar-Free Vanilla</span>
+    <div class="ofc-chip-row">
+      <span class="ofc-chip">Vanilla</span>
+      <span class="ofc-chip">Honey</span>
+      <span class="ofc-chip">Maple</span>
+      <span class="ofc-chip">Cardamom</span>
+      <span class="ofc-chip">Lavender</span>
+      <span class="ofc-chip">Caramel</span>
+      <span class="ofc-chip">Sugar-Free Vanilla</span>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <div class="head-left">
-        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6H16M4 10H16M4 14H16"/><circle cx="8" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="13" cy="10" r="1.5" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.5" fill="currentColor" stroke="none"/></svg></span>
-        <p class="script-title">make it yours</p>
+    <div class="ofc-section-head">
+      <div class="ofc-head-left">
+        <span class="ofc-sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6H16M4 10H16M4 14H16"/><circle cx="8" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="13" cy="10" r="1.5" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.5" fill="currentColor" stroke="none"/></svg></span>
+        <p class="ofc-script-title">make it yours</p>
       </div>
     </div>
-    <div class="customize">
+    <div class="ofc-customize">
       <div>
         <h3>Sizes</h3>
-        <p class="fine" style="margin-top:0;">Hot</p>
-        <div class="pill-wrap"><span class="pill">8oz</span><span class="pill">12oz</span><span class="pill">16oz</span></div>
-        <p class="fine">Iced</p>
-        <div class="pill-wrap"><span class="pill">12oz</span><span class="pill">16oz</span><span class="pill">24oz</span></div>
+        <p class="ofc-fine" style="margin-top:0;">Hot</p>
+        <div class="ofc-pill-wrap"><span class="ofc-pill">8oz</span><span class="ofc-pill">12oz</span><span class="ofc-pill">16oz</span></div>
+        <p class="ofc-fine">Iced</p>
+        <div class="ofc-pill-wrap"><span class="ofc-pill">12oz</span><span class="ofc-pill">16oz</span><span class="ofc-pill">24oz</span></div>
       </div>
       <div>
         <h3>Milks</h3>
-        <div class="pill-wrap">
-          <span class="pill">Whole</span>
-          <span class="pill">Oat</span>
-          <span class="pill">Almond</span>
-          <span class="pill">Non-Fat</span>
+        <div class="ofc-pill-wrap">
+          <span class="ofc-pill">Whole</span>
+          <span class="ofc-pill">Oat</span>
+          <span class="ofc-pill">Almond</span>
+          <span class="ofc-pill">Non-Fat</span>
         </div>
-        <p class="fine">No upcharge for alternative milks.</p>
+        <p class="ofc-fine">No upcharge for alternative milks.</p>
       </div>
       <div>
         <h3>Add-Ons</h3>
-        <div class="pill-wrap">
-          <span class="pill">Collagen Crush</span>
-          <span class="pill">Chagaccino</span>
-          <span class="pill">Cold Foam</span>
-          <span class="pill">Extra Shot</span>
+        <div class="ofc-pill-wrap">
+          <span class="ofc-pill">Collagen Crush</span>
+          <span class="ofc-pill">Chagaccino</span>
+          <span class="ofc-pill">Cold Foam</span>
+          <span class="ofc-pill">Extra Shot</span>
         </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="section-head">
-      <div class="head-left">
-        <span class="sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 9.5A3.8 3.8 0 0 1 10 5.5A3.8 3.8 0 0 1 13.8 9.5Z"/><path d="M6.2 9.5H13.8L10 16.8Z"/></svg></span>
-        <p class="script-title">ice cream &amp; pastries</p>
+    <div class="ofc-section-head">
+      <div class="ofc-head-left">
+        <span class="ofc-sec-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 9.5A3.8 3.8 0 0 1 10 5.5A3.8 3.8 0 0 1 13.8 9.5Z"/><path d="M6.2 9.5H13.8L10 16.8Z"/></svg></span>
+        <p class="ofc-script-title">ice cream &amp; pastries</p>
       </div>
     </div>
-    <div class="treat-row">
-      <div class="subcols">
+    <div class="ofc-treat-row">
+      <div class="ofc-subcols">
         <div>
           <h3>Ice Cream</h3>
-          <div class="list-grid single">
-            <div class="menu-item">Single Scoop</div>
-            <div class="menu-item">Double Scoop</div>
-            <div class="menu-item">Affogato</div>
-            <div class="menu-item">Matchagato</div>
+          <div class="ofc-list-grid ofc-single">
+            <div class="ofc-menu-item">Single Scoop</div>
+            <div class="ofc-menu-item">Double Scoop</div>
+            <div class="ofc-menu-item">Affogato</div>
+            <div class="ofc-menu-item">Matchagato</div>
           </div>
         </div>
         <div>
           <h3>Pastries</h3>
-          <div class="list-grid single">
-            <div class="menu-item">Rotating Seasonally</div>
-            <div class="menu-item">Fan Favorites Daily</div>
+          <div class="ofc-list-grid ofc-single">
+            <div class="ofc-menu-item">Rotating Seasonally</div>
+            <div class="ofc-menu-item">Fan Favorites Daily</div>
           </div>
         </div>
       </div>
-      <div class="badge">treat<br>yourself</div>
+      <div class="ofc-badge">treat<br>yourself</div>
     </div>
   </section>
 
 </div>
 
-<div class="cta">
-  <p class="signoff-mark">Overflow</p>
-  <p class="note">Pricing and opening day are coming soon.</p>
-  <div class="follow-row">
-    <span class="arrow">&#8594;</span>
-    <a class="follow-btn" href="https://www.instagram.com/overflowcoffee.pdx">FOLLOW @overflowcoffee.pdx</a>
-    <span class="arrow">&#8592;</span>
+<div class="ofc-cta">
+  <p class="ofc-signoff-mark">Overflow</p>
+  <p class="ofc-note">Pricing and opening day are coming soon.</p>
+  <div class="ofc-follow-row">
+    <span class="ofc-arrow">&#8594;</span>
+    <a class="ofc-follow-btn" href="https://www.instagram.com/overflowcoffee.pdx">FOLLOW @overflowcoffee.pdx</a>
+    <span class="ofc-arrow">&#8592;</span>
   </div>
 </div>
 
-<div class="stripe">
+<div class="ofc-stripe">
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 
 </div>
+</body>
+</html>
