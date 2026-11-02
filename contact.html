@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<title>Visit Us — Overflow Coffee</title>
+<title>Visit Us | Overflow Coffee</title>
 <meta name="description" content="Find Overflow Coffee's hours and location in Multnomah Village, Portland, Oregon.">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -31,15 +31,18 @@
   <div class="hero-content">
     <span class="eyebrow">Multnomah Village, Portland</span>
     <h1>Visit Us</h1>
-    <p class="sub">We're open every day — we can't wait to welcome you in.</p>
+    <p class="sub">We're open every day, and we can't wait to welcome you in.</p>
+    <div id="openNow" style="display:inline-flex; align-items:center; gap:10px; margin-top:22px; background:var(--cream); color:var(--ink); padding:10px 20px; border-radius:999px; font-family:'Poppins', sans-serif; font-weight:600; font-size:0.95rem;">
+      <span id="openDot" style="width:11px; height:11px; border-radius:50%; background:#999; display:inline-block;"></span>
+      <span id="openText">Open every day · 7:30am–3pm</span>
+    </div>
   </div>
 </section>
 
 <section id="countdown" class="alt-bg" style="text-align:center;">
   <span class="label-tag">Now Open</span>
   <div class="section-rule" style="margin-left:auto; margin-right:auto;"></div>
-  <p style="font-family:'Poppins', sans-serif; font-weight:700; font-size:1.3rem; margin-bottom:12px;">We're open every day — come say hi!</p>
-  <p style="font-size:1rem; opacity:0.85; font-family:'Poppins', sans-serif; max-width:500px; margin:0 auto 24px;">Follow along for behind-the-scenes updates, or join our email list on the homepage.</p>
+  <p style="font-family:'Poppins', sans-serif; font-weight:700; font-size:1.3rem; margin-bottom:24px;">We're open every day. Come say hi!</p>
   <a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener" class="btn-primary">Follow @overflowcoffee.pdx</a>
 </section>
 
@@ -55,7 +58,10 @@
       <div style="font-size:1.9rem; font-weight:700; font-family:'Poppins', sans-serif; color:var(--oxblood); line-height:1.1;">7:30 AM – 3:00 PM</div>
     </div>
   </div>
-  <p style="margin-top:20px; opacity:0.7; max-width:500px;">Open every day of the week. Hours may shift slightly as we settle in — check back for updates.</p>
+  <p style="margin-top:20px; opacity:0.7; max-width:500px;">Open every day of the week.</p>
+  <div id="weekChips" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; max-width:560px;">
+    <span class="dayChip" data-d="1">Mon</span><span class="dayChip" data-d="2">Tue</span><span class="dayChip" data-d="3">Wed</span><span class="dayChip" data-d="4">Thu</span><span class="dayChip" data-d="5">Fri</span><span class="dayChip" data-d="6">Sat</span><span class="dayChip" data-d="0">Sun</span>
+  </div>
 </section>
 
 <section class="alt-bg">
@@ -70,6 +76,7 @@
     <div class="contact-info">
       <h3>Location</h3>
       <p>On the corner of Canby & Capitol<br>7650 SW Capitol Hwy<br>Portland, OR 97219</p>
+      <p style="margin-top:14px;"><a href="https://www.google.com/maps/dir/?api=1&destination=7650+SW+Capitol+Hwy,+Portland,+OR+97219" target="_blank" rel="noopener" class="btn-primary">Get Directions →</a></p>
       <h3>Email</h3>
       <p><a href="mailto:hello@overflowcoffee.com">hello@overflowcoffee.com</a></p>
       <h3>Follow Along</h3>
@@ -78,7 +85,73 @@
   </div>
 </section>
 
+<section style="background:var(--oxblood); color:var(--cream); text-align:center;">
+  <p style="font-family:'Dancing Script', cursive; font-size:clamp(2.2rem,6vw,3.6rem); line-height:1.2; margin:0 0 10px;">There's a seat for you here.</p>
+  <p style="font-family:'Poppins', sans-serif; font-size:1rem; opacity:0.9; max-width:520px; margin:0 auto;">Come as you are. Stay a while or grab and go.</p>
+</section>
+
 <section>
+  <span class="label-tag">Before You Come</span>
+  <div class="section-rule"></div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; max-width:960px;">
+    <div style="background:#fff; border-radius:16px; padding:22px 20px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-size:1.8rem; margin-bottom:8px;">☕</div>
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:4px;">Dine in</div>
+      <div style="font-size:0.92rem; opacity:0.8;">Grab a seat and stay a while.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:22px 20px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-size:1.8rem; margin-bottom:8px;">🥡</div>
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:4px;">Take out</div>
+      <div style="font-size:0.92rem; opacity:0.8;">In a hurry? Order to go.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:22px 20px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-size:1.8rem; margin-bottom:8px;">📶</div>
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:4px;">Wi-Fi available</div>
+      <div style="font-size:0.92rem; opacity:0.8;">Bring your laptop and settle in.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:22px 20px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-size:1.8rem; margin-bottom:8px;">🐶</div>
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:4px;">Pup cups</div>
+      <div style="font-size:0.92rem; opacity:0.8;">Your four-legged friends get a treat too.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:22px 20px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-size:1.8rem; margin-bottom:8px;">📍</div>
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:4px;">Corner of Canby &amp; Capitol</div>
+      <div style="font-size:0.92rem; opacity:0.8;">Easy to spot in the Village.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:22px 20px; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-size:1.8rem; margin-bottom:8px;">🗓️</div>
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:4px;">7 days a week</div>
+      <div style="font-size:0.92rem; opacity:0.8;">Every day, 7:30am–3pm.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="label-tag">Make a Morning of It</span>
+  <div class="section-rule"></div>
+  <p style="max-width:600px; margin-bottom:30px; opacity:0.85;">We're right in the heart of Multnomah Village. Grab your drink and wander. Here are a few neighbors worth a visit.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; max-width:1000px;">
+    <div style="background:#fff; border-radius:16px; padding:24px 22px; border-top:6px solid var(--clay); box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:6px;">Annie Bloom's Books</div>
+      <div style="font-size:0.95rem; opacity:0.85; line-height:1.55;">Independent bookstore, since 1978. Grab a coffee, then browse.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:24px 22px; border-top:6px solid var(--clay); box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:6px;">Gabriel Park</div>
+      <div style="font-size:0.95rem; opacity:0.85; line-height:1.55;">91 acres with an off-leash area, play structures and picnic spots. Take your cup for a walk.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:24px 22px; border-top:6px solid var(--clay); box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:6px;">Thinker Toys</div>
+      <div style="font-size:0.95rem; opacity:0.85; line-height:1.55;">A hands-on toy store. A good stop with the kids.</div>
+    </div>
+    <div style="background:#fff; border-radius:16px; padding:24px 22px; border-top:6px solid var(--clay); box-shadow:0 15px 35px rgba(0,0,0,0.05);">
+      <div style="font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); margin-bottom:6px;">Northwest Wools</div>
+      <div style="font-size:0.95rem; opacity:0.85; line-height:1.55;">Portland's oldest yarn store, with hand-dyed fibers from regional artists.</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
   <span class="label-tag">Say Hello</span>
   <div class="section-rule"></div>
   <p style="max-width:600px; margin-bottom:30px; opacity:0.85;">Have a question, a partnership idea, or just want to say hi? Send us a note.</p>
@@ -109,6 +182,25 @@
   document.getElementById('navToggle').addEventListener('click', function(){
     document.getElementById('navLinks').classList.toggle('open');
   });
+  (function(){
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', {timeZone:'America/Los_Angeles', weekday:'short', hour:'numeric', minute:'numeric', hour12:false}).formatToParts(new Date());
+      var o = {}; parts.forEach(function(p){ o[p.type]=p.value; });
+      var mins = (parseInt(o.hour,10) % 24) * 60 + parseInt(o.minute,10);
+      var days = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+      var today = days[o.weekday];
+      var open = mins >= 450 && mins < 900;
+      var dot = document.getElementById('openDot'), txt = document.getElementById('openText');
+      if (open) { dot.style.background = '#3c9a4f'; txt.textContent = 'Open now, until 3pm'; }
+      else if (mins < 450) { dot.style.background = '#c9a227'; txt.textContent = 'Opening today at 7:30am'; }
+      else { dot.style.background = '#b3453d'; txt.textContent = 'Closed for today · back tomorrow at 7:30am'; }
+      document.querySelectorAll('.dayChip').forEach(function(c){
+        var isToday = parseInt(c.getAttribute('data-d'),10) === today;
+        c.style.cssText = 'padding:8px 16px; border-radius:999px; font-family:Poppins,sans-serif; font-weight:600; font-size:0.9rem; ' + (isToday ? 'background:var(--oxblood); color:var(--cream);' : 'background:#fff; border:1.5px solid var(--oxblood); color:var(--oxblood);');
+        if (isToday) c.textContent += ' · today';
+      });
+    } catch (e) {}
+  })();
 </script>
 
 </body>
