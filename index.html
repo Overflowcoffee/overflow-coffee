@@ -9,6 +9,22 @@
 <title>Overflow Coffee — Now Open in Multnomah Village, Portland</title>
 <meta name="description" content="Overflow Coffee is now open every day in Multnomah Village, Portland. Explore our menu, meet the founder, and stop by for a cup.">
 <link rel="stylesheet" href="css/style.css">
+<style>
+.hero-photo{position:relative; margin-left:auto; flex:0 0 auto; width:min(360px,36vw); transform:rotate(2.5deg);}
+.hero-photo img{display:block; width:100%; height:auto; border-radius:24px; border:6px solid var(--cream); box-shadow:0 24px 50px rgba(0,0,0,0.35);}
+.hero-photo .sticker{position:absolute; left:-28px; bottom:26px; background:var(--yellow); color:var(--ink); font-family:'Dancing Script', cursive; font-weight:700; font-size:1.35rem; line-height:1.1; padding:12px 18px; border-radius:16px; transform:rotate(-5deg); box-shadow:0 10px 24px rgba(0,0,0,0.25);}
+.shop-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; max-width:1050px; margin:0 auto;}
+.shop-card{background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,0.07); text-align:left;}
+.shop-card img{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover;}
+#instagram div{min-width:0;}
+#instagram blockquote.instagram-media{min-width:0 !important; max-width:100% !important;}
+.shop-card p{padding:16px 20px 20px; font-family:'Poppins', sans-serif; font-weight:600; color:var(--oxblood);}
+.gift-card{background:var(--yellow); border-radius:20px; padding:36px 28px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 15px 35px rgba(0,0,0,0.07);}
+@media (max-width:800px){
+  .hero{flex-direction:column; align-items:flex-start; gap:40px;}
+  .hero-photo{margin:0 auto; width:min(300px,78vw);}
+}
+</style>
 </head>
 <body>
 </div> <nav>
@@ -21,7 +37,7 @@
   </div>
   <button class="nav-toggle" id="navToggle">☰</button>
 <div style="background:var(--yellow); color:var(--ink); text-align:center; padding:10px 16px; font-family:'Poppins', sans-serif; font-weight:700; font-size:0.9rem;">
-  🎉 Now Open 7 Days a Week · 7:30am–3pm
+  Now Open 7 Days a Week · 7:30am–3pm
 </div>
 </nav>
 <section class="hero">
@@ -29,11 +45,29 @@
     <div class="b1"></div><div class="b2"></div>
   </div>
   <div class="hero-content">
-    <h1 style="white-space:nowrap; font-size:clamp(1.3rem, 4.2vw, 3.2rem);">Fill Your Cup, Share The Overflow.</h1>
-    <p class="sub">Overflow Coffee is a neighborhood coffee shop built on exceptional coffee, genuine hospitality, and community — now open every day!</p>
+    <h1 style="font-size:clamp(2rem, 4.4vw, 3.4rem);">Fill Your Cup, Share The Overflow.</h1>
+    <p class="sub">Overflow Coffee is a neighborhood coffee shop built on exceptional coffee, genuine hospitality, and community. Now open every day!</p>
     <div class="hero-btns">
       <a href="contact.html" class="btn-primary">Visit Us</a>
       <a href="menu.html" class="btn-secondary">See Our Menu</a>
+      <a href="https://app.squareup.com/gift/MLFPP970GWED6/order" target="_blank" rel="noopener" class="btn-secondary">Gift Cards</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="images/shop-window.jpg" alt="A latte on a marble table in front of the Overflow Coffee window sign" width="1000" height="1333">
+    <div class="sticker">There's a seat<br>waiting for you</div>
+  </div>
+</section>
+<section class="alt-bg" style="text-align:center;">
+  <span class="label-tag">Inside the Shop</span>
+  <h2 class="section-title" style="margin-bottom:36px;">Come on in</h2>
+  <div class="shop-grid">
+    <div class="shop-card"><img src="images/shop-shelf.jpg" alt="Overflow Coffee shirts, hats and bags of beans on a wooden shelf" loading="lazy" width="1000" height="1333"><p>Shirts, hats and beans to take home</p></div>
+    <div class="shop-card"><img src="images/shop-counter.jpg" alt="The Overflow Coffee counter with green and white tile and an ice cream scoops sign" loading="lazy" width="1000" height="1333"><p>Lattes, ice cream scoops and affogatos</p></div>
+    <div class="gift-card">
+      <h3 style="font-family:'Dancing Script', cursive; font-size:2.2rem; color:var(--oxblood); margin-bottom:10px;">Give the gift of coffee</h3>
+      <p style="margin-bottom:22px; max-width:260px;">Send an Overflow eGift Card to someone you love, instantly.</p>
+      <a href="https://app.squareup.com/gift/MLFPP970GWED6/order" target="_blank" rel="noopener" class="btn-primary">Buy a Gift Card</a>
     </div>
   </div>
 </section>
@@ -116,6 +150,7 @@
   <div style="display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-bottom:18px; font-weight:600;">
     <a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener">Instagram Photos →</a>
     <a href="https://share.google/ycdQS09h32Iznpn1c" target="_blank" rel="noopener">Google Reviews →</a>
+    <a href="https://app.squareup.com/gift/MLFPP970GWED6/order" target="_blank" rel="noopener">Gift Cards →</a>
   </div>
   Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
 </footer>
