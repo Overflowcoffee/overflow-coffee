@@ -3,70 +3,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Overflow Coffee — Site Under Construction</title>
-<meta name="description" content="Overflow Coffee's website is getting an update. We're open every day in Multnomah Village, Portland.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#F7F3EC; --olive:#6F7446; --yellow:#F1D56D; --oxblood:#742733; --ink:#2B2118;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    font-family:'Poppins', sans-serif;
-    background:var(--cream);
-    color:var(--ink);
-    line-height:1.6;
-    min-height:100vh;
-    display:flex; flex-direction:column;
-  }
-  .stripe{
-    height:40px; width:100%;
-    background:repeating-linear-gradient(to right, var(--cream) 0, var(--cream) 40px, var(--olive) 40px, var(--olive) 80px);
-  }
-  main{
-    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding:60px 6vw;
-  }
-  .eyebrow{
-    display:inline-block; background:var(--yellow); color:var(--ink);
-    padding:6px 16px; border-radius:20px; font-size:0.8rem; font-weight:700;
-    letter-spacing:1.5px; text-transform:uppercase; margin-bottom:22px;
-  }
-  h1{
-    font-family:'Dancing Script', cursive; font-weight:700; color:var(--oxblood);
-    font-size:clamp(3rem, 10vw, 5.5rem); line-height:1.05; margin-bottom:18px;
-  }
-  p.lead{font-size:1.15rem; max-width:520px; margin-bottom:12px;}
-  p.addr{font-size:1rem; opacity:0.75; margin-bottom:34px;}
-  .btns{display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
-  .btn-primary, .btn-secondary{
-    padding:14px 28px; border-radius:40px; text-decoration:none;
-    font-weight:700; font-size:1rem; display:inline-block;
-    font-family:'Poppins', sans-serif; transition:transform .2s ease;
-  }
-  .btn-primary{background:var(--oxblood); color:var(--cream);}
-  .btn-secondary{border:2px solid var(--ink); color:var(--ink);}
-  .btn-primary:hover, .btn-secondary:hover{transform:translateY(-3px);}
-  footer{
-    background:var(--ink); color:var(--cream); text-align:center;
-    padding:24px 6vw; font-size:0.85rem; opacity:0.85;
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Overflow Coffee — Now Open in Multnomah Village, Portland</title>
+<meta name="description" content="Overflow Coffee is now open every day in Multnomah Village, Portland. Explore our menu, meet the founder, and stop by for a cup.">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="stripe"></div>
-<main>
-  <span class="eyebrow">Site Under Construction</span>
-  <h1>Overflow Coffee</h1>
-  <p class="lead">Our website is getting a little update. We'll be back online soon, and we're open every day in the meantime.</p>
-  <p class="addr">7650 SW Capitol Hwy · Multnomah Village, Portland, OR</p>
-  <div class="btns">
-    <a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener" class="btn-primary">Instagram Photos →</a>
-    <a href="https://share.google/ycdQS09h32Iznpn1c" target="_blank" rel="noopener" class="btn-secondary">Google Reviews →</a>
+</div> <nav>
+  <a href="index.html" class="logo" style="position:relative; z-index:60;"><img src="images/logo.png" alt="Overflow Coffee" class="logo-img"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="active">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">Our Story</a>
+    <a href="contact.html">Visit Us</a>
   </div>
-</main>
-<footer>Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026</footer>
+  <button class="nav-toggle" id="navToggle">☰</button>
+<div style="background:var(--yellow); color:var(--ink); text-align:center; padding:10px 16px; font-family:'Poppins', sans-serif; font-weight:700; font-size:0.9rem;">
+  🎉 Now open every day!
+</div>
+</nav>
+<section class="hero">
+  <div class="hero-blocks">
+    <div class="b1"></div><div class="b2"></div>
+  </div>
+  <div class="hero-content">
+    <h1 style="white-space:nowrap; font-size:clamp(1.3rem, 4.2vw, 3.2rem);">Fill Your Cup, Share The Overflow.</h1>
+    <p class="sub">Overflow Coffee is a neighborhood coffee shop built on exceptional coffee, genuine hospitality, and community — now open every day!</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn-primary">Visit Us</a>
+      <a href="menu.html" class="btn-secondary">See Our Menu</a>
+    </div>
+  </div>
+</section>
+<section id="story">
+  <span class="label-tag">From the Founder</span>
+  <div class="section-rule"></div>
+  <div class="story-grid" style="grid-template-columns:1fr; max-width:700px; margin:0 auto;">
+    <div class="story-text">
+      <p>"Coffee has always been more than a beverage to me — it's always been a catalyst for connection. People may come for the coffee, but they return because of how they're made to feel."</p>
+      <p>Overflow is designed to become a place woven into the rhythm of everyday life in Multnomah Village — where families, students, entrepreneurs, and friends feel welcomed, known, and inspired to return.</p>
+      <div class="signature">— Kynzey Martini, Founder</div>
+      <a href="about.html" style="display:inline-block; margin-top:16px; font-family:'Poppins', sans-serif; font-weight:700; color:var(--oxblood); text-decoration:none; border-bottom:2px solid var(--oxblood);">Read the full story →</a>
+    </div>
+  </div>
+</section>
+<section class="alt-bg">
+  <span class="label-tag">Explore</span>
+  <div class="section-rule"></div>
+  <div class="teaser-grid">
+    <div class="teaser-card">
+      <h3>Our Menu</h3>
+      <p>Espresso, drip coffee, cold brew, loose leaf tea, specialty lattes, and ice cream — see what's brewing.</p>
+      <a href="menu.html">View the Menu →</a>
+    </div>
+    <div class="teaser-card">
+      <h3>Our Story</h3>
+      <p>Meet the founder and the vision behind Overflow — hospitality first, coffee second.</p>
+      <a href="about.html">Meet the Founder →</a>
+    </div>
+    <div class="teaser-card">
+      <h3>Visit Us</h3>
+      <p>We're open every day — find our hours and location.</p>
+      <a href="contact.html">Get Directions →</a>
+    </div>
+  </div>
+</section>
+<div class="closing">
+  <h2>Fill Your Cup, Share the Overflow</h2>
+  <p>Long after the drinks are finished and the tables are cleared, our hope is that what people remember most is how they felt. Seen. Welcomed. Encouraged. A little more full than when they arrived.</p>
+  <a href="contact.html" class="btn-primary">Visit Us</a>
+</div>
+<footer>
+  <div style="display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-bottom:18px; font-weight:600;">
+    <a href="https://www.instagram.com/overflowcoffee.pdx/" target="_blank" rel="noopener">Instagram Photos →</a>
+    <a href="https://share.google/ycdQS09h32Iznpn1c" target="_blank" rel="noopener">Google Reviews →</a>
+  </div>
+  Overflow Coffee · Multnomah Village, Portland, OR · Founded by Kynzey Martini · 2026
+</footer>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
 </body>
-</html>
+<!--
+  OVERFLOW COFFEE — Newsletter Signup Popup (brand-matched version)
+  ============================================
+  HOW TO USE:
+  1. Copy everything below (style, HTML, and script).
+  2. Paste it right before the closing </body> tag on any page of your site
+     (index.html, menu.html, etc.).
+  3. This assumes your existing "images/logo.png" path — since the popup
+     lives on the same site, it'll pick up your real logo automatically.
+     No need to re-upload anything.
+  4. This is already connected to your Formspree form (mrenrkon), so
+     submissions will land in your Formspree dashboard / notification
+     email automatically. Nothing else to configure.
+  5. The popup waits 4 seconds, then appears once per visit. If someone
+     closes it without signing up, they'll see it again on a future visit.
+     Once someone actually submits their email successfully, it won't show
+     to them again. Adjust SHOW_AFTER_MS below to change the delay.
+-->
+
+<style>
+  .oc-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 33, 24, 0.55); /* --ink, translucent */
+    backdrop-filter: blur(3px);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  .oc-popup-backdrop.oc-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .oc-popup-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%) scale(0.96);
+    width: min(720px, 92vw);
+    max-height: 90vh;
+    overflow: auto;
+    background: #F7F3EC; /* --cream */
+    color: #2B2118; /* --ink */
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.2,.8,.3,1);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+  }
+  .oc-popup-card.oc-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  @media (max-width: 640px) {
+    .oc-popup-card { grid-template-columns: 1fr; width: min(420px, 90vw); }
+    .oc-popup-art { min-height: 130px !important; }
+  }
+
+  /* signature gingham stripe, matching the top of the site and the footer */
+  .oc-stripe {
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(to right, #F7F3EC 0, #F7F3EC 16px, #6F7446 16px, #6F7446 32px);
+  }
+
+  .oc-popup-art {
+    background: #742733; /* --oxblood */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+
+  .oc-popup-art img {
+    max-width: 130px;
+    width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1); /* renders logo in cream so it reads on oxblood */
+  }
+
+  .oc-popup-body {
+    padding: 30px 36px 30px;
+    position: relative;
+  }
+
+  .oc-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(43,33,24,0.06);
+    color: #2B2118;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .oc-close:hover { background: rgba(43,33,24,0.12); }
+  .oc-close:focus-visible { outline: 2px solid #742733; outline-offset: 2px; }
+
+  .oc-eyebrow {
+    display: inline-block;
+    background: #F1D56D; /* --yellow */
+    color: #2B2118;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .oc-headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    letter-spacing: 0.3px;
+    margin: 0 0 12px;
+    color: #742733; /* --oxblood */
+  }
+
+  .oc-subcopy {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #2B2118;
+    opacity: 0.85;
+    margin: 0 0 22px;
+    max-width: 40ch;
+  }
+
+  .oc-form-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 480px) {
+    .oc-form-row { flex-direction: column; }
+  }
+
+  .oc-input {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
+    color: #2B2118;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+  }
+  .oc-input::placeholder { color: #2B2118; opacity: 0.45; }
+  .oc-input:focus {
+    outline: none;
+    border-color: #742733;
+  }
+
+  .oc-submit {
+    background: #742733; /* --oxblood */
+    color: #F7F3EC;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 26px;
+    border-radius: 40px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .oc-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(116,39,51,0.35); }
+  .oc-submit:focus-visible { outline: 2px solid #2B2118; outline-offset: 2px; }
+
+  .oc-finePrint {
+    font-size: 0.78rem;
+    color: #2B2118;
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .oc-success { display: none; }
+  .oc-success.oc-show { display: block; }
+  .oc-form-wrap.oc-hide { display: none; }
+
+  .oc-success-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #6F7446; /* --olive */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+</style>
+
+<div class="oc-popup-backdrop" id="ocBackdrop">
+  <div class="oc-popup-card" id="ocCard" role="dialog" aria-modal="true" aria-labelledby="ocHeadline">
+    <div class="oc-popup-art" aria-hidden="true">
+      <img src="images/logo.png" alt="">
+    </div>
+
+    <div class="oc-popup-body">
+      <button class="oc-close" id="ocClose" aria-label="Close">&times;</button>
+
+      <div class="oc-form-wrap" id="ocFormWrap">
+        <span class="oc-eyebrow">Now Open</span>
+        <h2 class="oc-headline" id="ocHeadline">STAY UP TO DATE!</h2>
+  
+        <p class="oc-subcopy">
+          Get news and menu updates — sent straight to your inbox, no spam.
+        </p>
+
+        <form id="ocForm" action="https://formspree.io/f/mrenrkon" method="POST">
+          <div class="oc-form-row">
+            <input
+              class="oc-input"
+              type="email"
+              id="ocEmail"
+              name="email"
+              placeholder="you@email.com"
+              required
+              aria-label="Email address"
+            />
+            <button class="oc-submit" type="submit">Join us</button>
+          </div>
+          <p class="oc-finePrint">One email a month or less. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
+      <div class="oc-success" id="ocSuccess">
+        <div class="oc-success-badge" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8.5L6.2 11.5L13 4.5" stroke="#F7F3EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="oc-headline">You're on the list.</h2>
+        <p class="oc-subcopy">
+          Thanks for joining us. Keep an eye on your inbox — first news lands soon.
+        </p>
+      </div>
+    </div>
+    <div class="oc-stripe" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ---------- TIMING (change this if you like) ----------
+  var SHOW_AFTER_MS = 1000;
+
+  var STORAGE_KEY = 'oc_newsletter_subscribed';
+
+  function shouldShow() {
+    try {
+      return localStorage.getItem(STORAGE_KEY) !== 'true';
+    } catch (e) {
+      // localStorage unavailable (e.g. private browsing) — just show it
+      return true;
+    }
+  }
+
+  function rememberSubscribed() {
+    try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+  }
+
+  var backdrop = document.getElementById('ocBackdrop');
+  var card = document.getElementById('ocCard');
+  var closeBtn = document.getElementById('ocClose');
+  var form = document.getElementById('ocForm');
+  var formWrap = document.getElementById('ocFormWrap');
+  var success = document.getElementById('ocSuccess');
+
+  function openPopup() {
+    backdrop.classList.add('oc-visible');
+    card.classList.add('oc-visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    backdrop.classList.remove('oc-visible');
+    card.classList.remove('oc-visible');
+    document.body.style.overflow = '';
+  }
+
+  if (shouldShow()) {
+    setTimeout(openPopup, SHOW_AFTER_MS);
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closePopup();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && card.classList.contains('oc-visible')) closePopup();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var submitBtn = form.querySelector('.oc-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function (response) {
+        if (response.ok) {
+          formWrap.classList.add('oc-hide');
+          success.classList.add('oc-show');
+          rememberSubscribed();
+          setTimeout(closePopup, 2600);
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join us';
+          alert('Something went wrong — please try again in a moment.');
+        }
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join us';
+        alert('Something went wrong — please check your connection and try again.');
+      });
+  });
+})();
+</script>
