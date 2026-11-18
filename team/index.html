@@ -135,6 +135,11 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
 .lock-row input{flex:1;min-width:0;font:inherit;font-size:20px;letter-spacing:.3em;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink)}
 .lock-row button{font:inherit;font-weight:600;padding:10px 22px;border-radius:999px;border:none;background:var(--ox);color:var(--ox-ink);cursor:pointer}
 .lock-form p{margin:0;min-height:1.6em}
+.menu-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.menu-list li{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.menu-list li span:last-child{font-weight:700;white-space:nowrap}
+.menu-list small{display:block;color:var(--muted);font-size:14px}
+.menu-list .tag{font-size:12px;font-weight:700;color:var(--olive);letter-spacing:.04em;margin-left:6px}
 </style>
 
 <header class="hero" id="welcome">
@@ -152,7 +157,9 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
     <li><a href="#values">Our values</a></li>
     <li><a href="#on-shift">With guests</a></li>
     <li><a href="#open-close">Open &amp; close</a></li>
+    <li><a href="#menu">Menu</a></li>
     <li><a href="#recipes">Recipes</a></li>
+    <li><a href="#bar">Behind the bar</a></li>
     <li><a href="#practical">The practical stuff</a></li>
     <li><a href="#first-week">First week</a></li>
     <li><a href="#later">Saved for later</a></li>
@@ -182,6 +189,43 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
     <li><h3>Act</h3><p>Turn that opening into something that makes their visit special.</p></li>
   </ol>
 
+  <div class="card" style="margin-bottom:18px">
+    <h3>What we expect with every guest</h3>
+    <ul>
+      <li><strong>Greet them right away.</strong> Every guest, every time, even if you're in the middle of a drink.</li>
+      <li><strong>Learn names.</strong> Make it a point to know them and use them.</li>
+      <li><strong>Give thoughtful suggestions.</strong> Ask what they usually like, then recommend something that fits.</li>
+      <li><strong>Invite them in.</strong> Bring guests into the conversation behind the bar.</li>
+      <li><strong>Walk it out.</strong> Bring for-here drinks and pastries to their table.</li>
+      <li><strong>Say goodbye too.</strong> Thank people on their way out, not just when they walk in.</li>
+      <li><strong>Fix it, no questions.</strong> If a drink isn't right, remake it happily.</li>
+      <li><strong>Know the menu.</strong> Be able to explain any drink, our two drips and our teas.</li>
+      <li><strong>Make kids feel welcome.</strong> Talk to them, not just their parents.</li>
+    </ul>
+  </div>
+
+  <div class="grid2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Handling tough moments</h3>
+      <ul>
+        <li><strong>Drink not right?</strong> Remake it, no questions and no charge.</li>
+        <li><strong>Unhappy guest?</strong> Stay calm, listen, apologize and offer a fix. Don't take it personally.</li>
+        <li><strong>Refunds:</strong> if a remake won't fix it, refund the item in Square. Don't argue. Text Kynzey about anything bigger or repeat issues.</li>
+        <li><strong>Rude or unsafe guest:</strong> you can ask anyone who is harassing, threatening or making others unsafe to leave. Keep it calm and direct: "I need to ask you to leave."</li>
+        <li><strong>If they won't leave or you feel in danger,</strong> call 911. Never physically remove anyone.</li>
+        <li><strong>Theft:</strong> don't chase or confront. Note what happened and tell Kynzey.</li>
+        <li><strong>Call or text Kynzey</strong> if someone is hurt, equipment breaks, the till is off, or you're just not sure.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Guest FAQs</h3>
+      <ul>
+        <li><strong>Wi-Fi:</strong> network <strong>Overflow Guest</strong>, password <strong>fillyourcup</strong></li>
+        <li><strong>Dogs:</strong> well-behaved dogs are welcome inside, but we can ask them to leave if needed. Always offer a free pup cup!</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="band" style="margin-top:18px">
     <span class="label">When it gets busy</span>
     <p>Embrace the chaos. Have fun, stay calm.</p>
@@ -208,6 +252,83 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
   <p class="muted" style="margin-top:10px">Checkmarks save on this device and clear on their own each new day.</p>
 </section>
 
+<section id="menu">
+  <div class="sec-head"><p class="script">get to know the menu</p><h2>Our menu</h2></div>
+  <p class="muted">Prices shown are for the smallest size. No upcharge for alternative milks.</p>
+  <div class="band"><span class="label">Rotating seasonal</span><p>Our seasonal lattes and cold foams change with the seasons. Check the menu board and the Recipes section for what's on now.</p></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Signature lattes</h3>
+      <ul class="menu-list">
+        <li><span>Bee Sting<small>Latte with real honey and sea salt.</small></span><span></span></li>
+        <li><span>Sugar &amp; Spice<small>Latte with vanilla, cardamom and cinnamon. Same total syrup as any flavored latte, shared evenly between vanilla and cardamom.</small></span><span></span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Coffee</h3>
+      <ul class="menu-list">
+        <li><span>Drip<small>Two daily drips: <strong>Dos Manos</strong> (medium/dark) and <strong>Pura Vida</strong> (medium, honey process). <a href="https://lostandfoundcoffee.com" target="_blank" rel="noopener">Learn more about our coffee</a>.</small></span><span>3.75</span></li>
+        <li><span>Americano<small>Water topped with espresso.</small></span><span>4.00</span></li>
+        <li><span>Latte<small>Espresso with steamed milk and a thin layer of microfoam.</small></span><span>5.50</span></li>
+        <li><span>Mocha<small>A latte with chocolate.</small></span><span>5.75</span></li>
+        <li><span>Cold Brew<small>Coffee steeped for 24 hours, served over ice. Smooth and low in acidity.</small></span><span>6.00</span></li>
+        <li><span>Cappuccino<span class="tag">one size</span><small>Espresso with less milk and more foam than a latte. Light and airy.</small></span><span>5.25</span></li>
+        <li><span>Cortado<span class="tag">one size</span><small>Espresso with about an equal amount of steamed milk.</small></span><span>5.50</span></li>
+        <li><span>Macchiato<span class="tag">one size</span><small>Espresso marked with a spoonful of milk foam.</small></span><span>5.75</span></li>
+        <li><span>Espresso<span class="tag">one size</span><small>A straight double shot.</small></span><span>6.00</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Non-coffee</h3>
+      <ul class="menu-list">
+        <li><span>Matcha Latte<small>Unsweetened, ceremonial-grade matcha powder with milk. Has caffeine.</small></span><span>6.00</span></li>
+        <li><span>Chai Latte<small>Spiced black tea with steamed milk. Has caffeine.</small></span><span>5.50</span></li>
+        <li><span>London Fog<small>Earl Grey tea with vanilla and steamed milk.</small></span><span>5.25</span></li>
+        <li><span>Hot Chocolate<small>Chocolate and steamed milk. No coffee.</small></span><span>4.00</span></li>
+        <li><span>Kids Steamer<small>Steamed milk at a kid-friendly temperature, with a flavor if they'd like.</small></span><span>4.00</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Loose-leaf tea</h3>
+      <p class="muted" style="font-size:15px;margin:0 0 10px">All our tea comes from Jasmine Pearl, a local Portland tea company.</p>
+      <ul class="menu-list">
+        <li><span>Any tea</span><span>3.75</span></li>
+        <li><span>English Breakfast<small>Bold, malty black tea. Has caffeine.</small></span><span></span></li>
+        <li><span>Earl Grey<small>Black tea with bergamot (citrus). Has caffeine.</small></span><span></span></li>
+        <li><span>Sencha<small>Japanese green tea. Light and grassy, some caffeine.</small></span><span></span></li>
+        <li><span>Northwest Mint<span class="tag">caffeine-free</span><small>Herbal mint tea.</small></span><span></span></li>
+        <li><span>Lavender Honey<span class="tag">caffeine-free</span><small>Floral herbal tea.</small></span><span></span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Flavors <span class="tag" style="font-size:13px">+$0.25–$1.00, varies by size</span></h3>
+      <p class="muted" style="font-size:15px">Add to any drink. Amounts per size are in the Recipes build chart.</p>
+      <ul class="chips"><li>Vanilla</li><li>Honey</li><li>Maple</li><li>Cardamom</li><li>Lavender</li><li>Caramel</li><li>Sugar-Free Vanilla</li></ul>
+      <h3 style="margin-top:16px">Milks</h3>
+      <p class="muted" style="font-size:15px">Any milk, no upcharge.</p>
+      <ul class="chips"><li>Whole</li><li>Oat</li><li>Almond</li><li>Non-fat</li></ul>
+    </div>
+    <div class="card">
+      <h3>Add-ons</h3>
+      <ul class="menu-list">
+        <li><span>Collagen Crush<small>Renude protein boost made for espresso drinks: 20g of protein, ashwagandha and lion’s mane, with a subtly sweet vanilla taste.</small></span><span>2.00</span></li>
+        <li><span>Chagaccino<small>Renude’s “mushroom mocha” powder: wild-foraged chaga, organic cacao, cinnamon and monk fruit. Sugar-free.</small></span><span>2.00</span></li>
+        <li><span>Cold Foam<small>Sweet whipped cream foam on top of an iced drink.</small></span><span>1.00</span></li>
+        <li><span>Extra Shot<small>One more shot of espresso.</small></span><span>0.75</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Treats</h3>
+      <ul class="menu-list">
+        <li><span>Single Scoop<small>One scoop of ice cream.</small></span><span>4.50</span></li>
+        <li><span>Double Scoop<small>Two scoops of ice cream.</small></span><span>6.50</span></li>
+        <li><span>Affogato<small>A shot of espresso poured over ice cream.</small></span><span>7.00</span></li>
+        <li><span>Matchagato<small>Matcha poured over ice cream.</small></span><span>7.50</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section id="recipes">
   <div class="sec-head"><p class="script">recipes</p><h2>Build chart</h2></div>
   <p class="muted">Hot comes in 8, 12 and 16 oz. Iced comes in 12, 16 and 24 oz. No 24 oz hot and no 8 oz iced.</p>
@@ -220,6 +341,19 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
     <tr><td>24 oz <span class="muted" style="font-weight:400">iced</span></td><td><strong>Quad</strong></td><td>1.75 oz</td><td>1.5 oz</td></tr>
   </table>
   </div>
+
+  <h3 style="margin-top:28px">Tea &amp; matcha</h3>
+  <p class="muted" style="margin:6px 0 12px">London Fogs and iced tea use double the tea. Matcha uses <strong>heaping</strong> teaspoons.</p>
+  <div class="tablewrap">
+  <table class="table">
+    <tr><th>Size</th><th>Hot tea</th><th>Hot London Fog</th><th>Iced tea</th><th>Matcha</th></tr>
+    <tr><td>8 oz</td><td>1 tsp</td><td>2 tsp</td><td>—</td><td>1 heaping tsp</td></tr>
+    <tr><td>12 oz</td><td>1½ tsp</td><td>3 tsp</td><td>3 tsp</td><td>1½ heaping tsp</td></tr>
+    <tr><td>16 oz</td><td>2 tsp</td><td>4 tsp</td><td>4 tsp</td><td>2 heaping tsp</td></tr>
+    <tr><td>24 oz</td><td>—</td><td>—</td><td>5 tsp</td><td>2½ heaping tsp <span class="muted" style="font-weight:400">iced</span></td></tr>
+  </table>
+  </div>
+
 
   <h3 style="margin-top:28px">Fall seasonal menu 2026 <span class="soon">Syrup batches</span></h3>
   <div class="grid2" style="margin-top:12px">
@@ -285,6 +419,41 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
         <li>2 tsp pumpkin pie spice</li>
         <li>Pinch of salt</li>
         <li>Dash of cinnamon</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="bar">
+  <div class="sec-head"><p class="script">behind the bar</p><h2>Standards, safety and slow times</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Milk &amp; drink standards</h3>
+      <ul>
+        <li><strong>Steam to 140–155°F,</strong> aiming for about 150°F. Hotter starts to taste flat and burnt.</li>
+        <li><strong>Add air early,</strong> before the milk passes about 100°F, then spin it into silky microfoam.</li>
+        <li><strong>Kids' temp:</strong> 120–130°F for steamers and kids' hot chocolate.</li>
+        <li><strong>Extra hot:</strong> up to about 165°F. Never boil the milk.</li>
+        <li><strong>Latte art on every drink.</strong></li>
+        <li>Use a thermometer until you can feel the right temp by hand.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>When it's slow</h3>
+      <ul>
+        <li>Restock sauces</li>
+        <li>Make simple syrup</li>
+        <li>Make cold foam</li>
+        <li>Clean the bathroom</li>
+        <li>Restock teas</li>
+        <li>Restock drip beans</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Safety</h3>
+      <ul>
+        <li>The <strong>first aid kit</strong> and <strong>fire extinguisher</strong> are in the closet.</li>
+        <li>In an emergency, call <strong>911</strong> first, then Kynzey.</li>
       </ul>
     </div>
   </div>
@@ -488,7 +657,7 @@ footer .inner{display:grid;gap:8px;padding-bottom:24px}
 <footer>
   <div class="wrap inner">
     <p class="script" style="font-size:40px">leave a little more full</p>
-    <p class="muted" style="margin:0">Questions? Ask Kynzey anytime. · 7650 SW Capitol Hwy, Portland · overflowcoffeepdx.com</p>
+    <p class="muted" style="margin:0">Questions or concerns? Ask Kynzey anytime: <a href="tel:+15035045647">503-504-5647</a>. · 7650 SW Capitol Hwy, Portland · overflowcoffeepdx.com</p>
   </div>
   <div class="stripes" aria-hidden="true"></div>
 </footer>
